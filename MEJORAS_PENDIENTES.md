@@ -1,7 +1,7 @@
 # Mejoras Pendientes
 
 ## Prioridad alta
-- [ ] Refactorizar controladores grandes (Estructura_view_usuarios.py 872 líneas) - separar reportes
+- [x] Refactorizar controladores grandes (Estructura_view_usuarios.py 872 líneas) - separar reportes
 - [ ] Reemplazar print() restantes por logging en todos los controladores
 
 ## Prioridad media

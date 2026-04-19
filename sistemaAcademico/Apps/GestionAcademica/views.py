@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 
 from .Controladores.Configuraciones.Estructura_view_empresa import *
 from .Controladores.Configuraciones.Estructura_view_usuarios import *
+from .Controladores.Configuraciones.Estructura_view_reportes_conf import *
 from .Controladores.Configuraciones.Estructura_view_menu import *
 from .Controladores.Configuraciones.Estructura_view_acciones import *
 from .Controladores.Configuraciones.Estructura_view_modulo import *
