@@ -1,3 +1,5 @@
+import logging
+
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import MovDetalleRegistroNotas,Mov_Materia_profesor,MovMatriculacionEstudiante,MovDetalleMateriaCurso,MovCabRegistroNotas,Mov_Aniolectivo_curso
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario
@@ -20,7 +22,7 @@ from sistemaAcademico.Apps.GestionAcademica.Forms.Quimestrales.Segundo_Quimestre
 #Supretorio
 from sistemaAcademico.Apps.GestionAcademica.Forms.Quimestrales.forms_generales import Generales_notas_form
 
-
+logger = logging.getLogger(__name__)
 
 
 #CREAR LA NOTA
@@ -69,7 +71,7 @@ class Update_notasSupre(UpdateView):
                         context['profesor'] = materia
                         context['materia'] = i
             except Exception as e:
-                print(e)
+                logger.error("Error: %s", e)
 
         return context
 
@@ -116,7 +118,7 @@ class Update_notas(UpdateView):
                         context['profesor'] = materia
                         context['materia'] = i
             except Exception as e:
-                print(e)
+                logger.error("Error: %s", e)
 
         return context
 
@@ -163,7 +165,7 @@ class Update_notas2(UpdateView):
                         context['profesor'] = materia
                         context['materia'] = i
             except Exception as e:
-                print(e)
+                logger.error("Error: %s", e)
 
         return context
 

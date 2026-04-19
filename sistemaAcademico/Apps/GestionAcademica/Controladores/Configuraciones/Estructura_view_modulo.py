@@ -1,3 +1,5 @@
+import logging
+
 from dal import autocomplete
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
@@ -8,6 +10,8 @@ from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr 
 from django.views.generic import ListView,CreateView,UpdateView
 
 from sistemaAcademico.Apps.GestionAcademica.Forms.Configuracion.forms_configuraciones import modulo_form
+
+logger = logging.getLogger(__name__)
 
 class Modulo(ListView):
     model= ConfModulo
@@ -94,7 +98,7 @@ def editar_modulo(request,id):
             modulo.save()
             return redirect('Academico:modulo')
     except Exception as e:
-        print(e)
+        logger.error("Error en modulo: %s", e)
     
     return render(request,'sistemaAcademico/Configuraciones/Modulos/editar_modulo.html',contexto)
 

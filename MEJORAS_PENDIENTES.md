@@ -2,7 +2,7 @@
 
 ## Prioridad alta
 - [x] Refactorizar controladores grandes (Estructura_view_usuarios.py 872 líneas) - separar reportes
-- [ ] Reemplazar print() restantes por logging en todos los controladores
+- [x] Reemplazar print() restantes por logging en todos los controladores
 
 ## Prioridad media
 - [ ] Capa de servicios para lógica de negocio (matriculación, notas)

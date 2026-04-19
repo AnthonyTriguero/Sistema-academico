@@ -4,3 +4,38 @@ WARNING 2026-04-19 06:12:10,752 middleware Acceso no autorizado a /inicio/
 WARNING 2026-04-19 06:12:38,080 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
 WARNING 2026-04-19 06:12:39,499 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
 WARNING 2026-04-19 06:12:40,548 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 06:13:58,124 views Intento de login fallido para usuario: anthony
+ERROR 2026-04-19 06:17:15,614 context Error while parsing CSS file
+Traceback (most recent call last):
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\context.py", line 519, in parseExternal
+    result = self.parse(cssFile.getData())
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 458, in parse
+    src, stylesheet = self._parseStylesheet(src)
+                      ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 566, in _parseStylesheet
+    src, ruleset = self._parseRuleset(src)
+                   ~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 918, in _parseRuleset
+    src, selectors = self._parseSelectorGroup(src)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 928, in _parseSelectorGroup
+    src, selector = self._parseSelector(src)
+                    ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 942, in _parseSelector
+    src, selector = self._parseSimpleSelector(src)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 999, in _parseSimpleSelector
+    src, selector = self._parseSelectorPseudo(src, selector)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 1080, in _parseSelectorPseudo
+    raise self.ParseError(msg, src, ctxsrc)
+xhtml2pdf.w3c.cssParser.CSSParseError: Selector Pseudo Function closing ')' not found:: (':not(', ':focus-visible){outl')
+WARNING 2026-04-19 06:23:31,138 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 06:23:32,558 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 06:23:33,610 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 06:24:09,964 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 06:24:11,367 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 06:24:12,436 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 06:24:39,689 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 06:24:41,084 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 06:24:42,119 middleware Acceso no autorizado a /inicio/

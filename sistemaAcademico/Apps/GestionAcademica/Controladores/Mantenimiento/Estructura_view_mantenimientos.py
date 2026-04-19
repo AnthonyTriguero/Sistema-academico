@@ -1,3 +1,4 @@
+import logging
 import socket
 
 from django.http import HttpResponseRedirect
@@ -8,6 +9,8 @@ from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
 from sistemaAcademico.Apps.GestionAcademica.Forms.Admision.forms_mantenimientos import *
+
+logger = logging.getLogger(__name__)
 
 
 class Empleado(ListView):
@@ -52,12 +55,12 @@ class Estudiantes(DetailView):
             context = self.get_context_data(object=self.object)
             variable = self.request.session.get("val")
             var_1 = kwargs["pk"]
-            print("este es el ", kwargs)
+            logger.debug("kwargs: %s", kwargs)
             if variable:
                 usu = self.request.session.get('usuario')
                 var_3 = UsuarioTemp.objects.filter(id_usuario_temp=usu).first()
                 var_2 = MantPersona.objects.filter(id_persona=var_3.id_persona.id_persona).first()
-                print(f"esto es {usu} y esto {var_1}")
+                logger.debug("usuario: %s, var_1: %s", usu, var_1)
                 if var_2.id_persona == var_1:
                     return render(self.request, self.template_name, context)
                 else:
@@ -246,12 +249,12 @@ class ConsultarEstudiante(UpdateView):
             context = self.get_context_data(object=self.object)
             variable = self.request.session.get("val")
             var_1 = kwargs["pk"]
-            print("este es el ", kwargs)
+            logger.debug("kwargs: %s", kwargs)
             if variable:
                 usu = self.request.session.get('usuario')
                 var_3 = UsuarioTemp.objects.filter(id_usuario_temp=usu).first()
                 var_2 = MantPersona.objects.filter(id_persona=var_3.id_persona.id_persona).first()
-                print(f"esto es {usu} y esto {var_1}")
+                logger.debug("usuario: %s, var_1: %s", usu, var_1)
                 if var_2.id_persona == var_1:
                     return render(self.request, self.template_name, context)
                 else:
@@ -277,12 +280,12 @@ class UpdateEstudiante(UpdateView):
             context = self.get_context_data(object=self.object)
             variable = self.request.session.get("val")
             var_1 = kwargs["pk"]
-            print("este es el ", kwargs)
+            logger.debug("kwargs: %s", kwargs)
             if variable:
                 usu = self.request.session.get('usuario')
                 var_3 = UsuarioTemp.objects.filter(id_usuario_temp=usu).first()
                 var_2 = MantPersona.objects.filter(id_persona=var_3.id_persona.id_persona).first()
-                print(f"esto es {usu} y esto {var_1}")
+                logger.debug("usuario: %s, var_1: %s", usu, var_1)
                 if var_2.id_persona == var_1:
                     return render(self.request, self.template_name, context)
                 else:

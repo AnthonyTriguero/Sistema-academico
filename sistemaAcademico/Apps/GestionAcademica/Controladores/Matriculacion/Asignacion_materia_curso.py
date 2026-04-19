@@ -1,3 +1,5 @@
+import logging
+
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_mov_materia_curso import Mov_Materia_Curso_forms
@@ -6,6 +8,8 @@ from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov i
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
+
+logger = logging.getLogger(__name__)
 
 
 class Crear_materia_curso(CreateView):
@@ -24,7 +28,7 @@ class Crear_materia_curso(CreateView):
             query =MovDetalleMateriaCurso.objects.filter(id_genr_materias=materia,id_mov_anio_lectivo_curso=anio,estado=97).count()
 
             if query >1:
-                print(query)
+                logger.debug("query duplicada: %s", query)
                 data.delete()
                 messages.error(request, 'Esta materia ya se encuentra asignada')
                 return self.render_to_response(self.get_context_data(form=form))
@@ -57,7 +61,7 @@ class Editar_materia_curso(UpdateView):
             query =MovDetalleMateriaCurso.objects.filter(id_genr_materias=materia,id_mov_anio_lectivo_curso=anio,estado=97).count()
 
             if query >1:
-                print(query)
+                logger.debug("query duplicada: %s", query)
                 data.delete()
                 messages.error(request, 'Esta materia ya se encuentra asignada')
                 return self.render_to_response(self.get_context_data(form=form))

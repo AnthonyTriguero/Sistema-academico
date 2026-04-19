@@ -1,3 +1,5 @@
+import logging
+
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from sistemaAcademico.Apps.GestionAcademica.models  import MantPersona, MantEstudiante,MovDetalleMateriaCurso
 from sistemaAcademico.Apps.GestionAcademica.models  import GenrGeneral, UsuarioTemp
@@ -16,6 +18,8 @@ import xlrd
 
 from django.utils import timezone
 import socket
+
+logger = logging.getLogger(__name__)
 
 
 class Upload_FileEX(View):
@@ -41,7 +45,7 @@ class Upload_FileEX(View):
     def handle_uploaded_file(self, file, filename, request,id_mov_anioelectivo_curso):
             global apellidos
             global nombres
-            print('leyendo archivo...')
+            logger.info("Leyendo archivo...")
             usuario = ConfUsuario.objects.get(
                id_usuario=request.session.get('usuario'))
 
@@ -88,7 +92,7 @@ class Upload_FileEX(View):
                             persona = MantPersona.objects.filter(identificacion=cedula).first()
                             if persona:
                                     messages.error(request, 'Uno de los estudiantes ya esta ingresado' )
-                                    print('encontrada')
+                                    logger.debug("Estudiante ya ingresado")
                             else:
                                 personSave = MantPersona(nombres=nombres,apellidos=apellidos,identificacion=cedula,
                                 estado=GenrGeneral.objects.get(nombre='ACTIVO'),fecha_ingreso=timezone.now(),usuario_ing= usuario.usuario,terminal_ing=socket.gethostname(),id_genr_tipo_usuario=GenrGeneral.objects.get(idgenr_general=19))
@@ -101,7 +105,7 @@ class Upload_FileEX(View):
                                 matriculacion = MovMatriculacionEstudiante(id_estudiante=MantEstudiante.objects.get(id_estudiante=estudiante.id_estudiante),
                                 id_mov_anioelectivo_curso=Mov_Aniolectivo_curso.objects.get(id_mov_anioelectivo_curso=id_mov_anioelectivo_curso),estado=GenrGeneral.objects.get(nombre='INACTIVO'),fecha_ingreso=timezone.now(),usuario_ing=usuario.usuario,terminal_ing=socket.gethostname())
                                 matriculacion.save()
-                                print(personSave)
+                                logger.debug("Persona guardada: %s", personSave)
                                 try:
                                     h = hashlib.new("sha1")
                                     var_contra = str.encode(cedula)
@@ -113,7 +117,7 @@ class Upload_FileEX(View):
                                     pass
                                 messages.success(request, 'Ingreso correcto', extra_tags='safe')
                         else:
-                            print('campo incorrecto')
+                            logger.warning("Campo incorrecto")
                             messages.error(request, 'Campo incorrecto' )
                     
                 else:

@@ -1,3 +1,5 @@
+import logging
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
@@ -11,6 +13,8 @@ import socket
 from sistemaAcademico.Apps.GestionAcademica import forms
 from django.utils import timezone
 from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_mov_horario_curso import *
+
+logger = logging.getLogger(__name__)
 
 
 class HorarioCurso (ListView):
@@ -59,7 +63,7 @@ class HorarioCurso (ListView):
 
         context['bool']=True
 
-        print(context)
+        logger.debug("context: %s", context)
 
         return render(request, self.template_name, context)
 

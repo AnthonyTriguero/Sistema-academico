@@ -1,5 +1,9 @@
+import logging
+
 from django import forms
 from sistemaAcademico.Apps.GestionAcademica.models import Mov_Aniolectivo_curso
+
+logger = logging.getLogger(__name__)
 
 
 class UploadFileForm(forms.Form):
@@ -20,5 +24,5 @@ class UploadFileForm(forms.Form):
             )
         )
     except Exception as e:
-        print("ERROR FORM FILE")
+        logger.error("Error en formulario de archivo")
     

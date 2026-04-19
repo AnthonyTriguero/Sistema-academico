@@ -1,3 +1,5 @@
+import logging
+
 from django.views.generic import ListView, UpdateView
 from django.urls import reverse_lazy
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
@@ -10,6 +12,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.views.decorators.cache import cache_page
+
+logger = logging.getLogger(__name__)
 
 
 class List_docente(ListView):
@@ -44,7 +48,7 @@ class List_docente_asignado(ListView):
                 id_empleado__id_persona__estado=97).prefetch_related('id_detalle_materia_curso')
             count = 1
             for materia in queryset:
-                print(materia)
+                logger.debug("materia: %s", materia)
                 roles = materia.id_detalle_materia_curso.all()
                 for role in roles:
                     lista.append(
@@ -67,7 +71,7 @@ class List_docente_sin_asignar(ListView):
             for q in self.queryset:
                 if not q.id_detalle_materia_curso.exists():
                     profesores.append(q)
-                    print("NM", profesores)
+                    logger.debug("profesores sin asignar: %s", profesores)
             context['lista_profesor_sin_asignar'] = profesores
             return render(request, self.template_name, context)
         else:
@@ -80,7 +84,7 @@ def eliminar_profesor(request, id):
         if request.method == 'POST':
             profesor.id_empleado.id_persona.estado = inactivo
             profesor.id_empleado.id_persona.save()
-            print('cheche', profesor.id_empleado.id_persona.estado)
+            logger.debug("estado profesor: %s", profesor.id_empleado.id_persona.estado)
 
             return redirect('Academico:asignacion_materiasprof')
         return render(request, 'sistemaAcademico/Matriculacion/Asignacion_Mprofesor/eliminarProfesor.html', {'asignacion_materiasprof': profesor})

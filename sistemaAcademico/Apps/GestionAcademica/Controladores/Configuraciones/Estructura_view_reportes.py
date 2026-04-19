@@ -1,3 +1,4 @@
+import logging
 import time
 from datetime import date
 
@@ -12,6 +13,8 @@ from xhtml2pdf import pisa
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
 from sistemaAcademico.utils import link_callback
+
+logger = logging.getLogger(__name__)
 
 
 def reporte_usuarios(request):
@@ -184,7 +187,7 @@ def reporte_excell(usuarios, campoChk=None, usuarioph=None):
 
 
 def usur(ws, usuario):
-    print(usuario)
+    logger.debug("usuario: %s", usuario)
     ws['B4'] = 'Usuario: '
     ws['C4'] = ' {0}'.format(usuario)
 
@@ -220,7 +223,7 @@ def reporte_roles(request):
         rol = None
         if request.method == 'POST':
             usuario = ConfUsuario.objects.get(id_usuario=request.session.get('usuario'))
-            print(usuario)
+            logger.debug("usuario: %s", usuario)
             campoChk2 = request.POST.get('check2')
             campo2 = request.POST.get('campo')
             combo = int(request.POST.get('combo'))
@@ -231,9 +234,9 @@ def reporte_roles(request):
             elif combo == 3:
                 return render(request, 'sistemaAcademico/reportes/reporterol.html')
 
-            print('kjkjkjkj', campo2)
+            logger.debug("campo2: %s", campo2)
             comboR = int(request.POST.get('comboR'))
-            print('el reporte es: ', comboR)
+            logger.debug("comboR: %s", comboR)
             if comboR == 1:
                 return reporte_excel_rol(rol, campoChk2, usuario)
             elif comboR == 2:
@@ -390,7 +393,7 @@ def reporte_excel_rol(rol, campoChk2=None, usuarioph=None):
 
 
 def usur(ws, usuario):
-    print(usuario)
+    logger.debug("usuario: %s", usuario)
     ws['B4'] = 'Usuario: '
     ws['C4'] = ' {0}'.format(usuario)
 
@@ -430,7 +433,7 @@ def reporte_horarioEst(request):
                 horario = Mov_Horario_materia.objects.filter(
                     id_materia_profesor__id_detalle_materia_curso__id_mov_anio_lectivo_curso__id_curso__nombre=buscador1).select_related(
                     'id_materia_profesor', 'id_genr_dia')
-                print(horario)
+                logger.debug("horario: %s", horario)
             elif combo == 3:
                 return render(request, 'sistemaAcademico/reportes/Horario_est.html')
 

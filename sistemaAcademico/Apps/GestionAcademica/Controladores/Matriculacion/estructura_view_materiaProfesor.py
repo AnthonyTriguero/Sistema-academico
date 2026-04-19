@@ -1,3 +1,5 @@
+import logging
+
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
@@ -5,6 +7,8 @@ from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov i
 from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_mov_anio_curso import MovMateriaProfesorForm
 from django.contrib import messages
 from django.db.models import Q
+
+logger = logging.getLogger(__name__)
 
 class MovMateriProfesorList(UpdateView):
     model = Mov_Materia_profesor
@@ -24,7 +28,7 @@ class MovMateriProfesorList(UpdateView):
         for i in array_form:
             #si 
             materia = MovDetalleMateriaCurso.objects.get(id_detalle_materia_curso=i)
-            print(materia)
+            logger.debug("materia: %s", materia)
 
             value_materia= Mov_Materia_profesor.objects.filter(id_detalle_materia_curso=i).filter(~Q(id_materia_profesor=id_materia_profesor))
             for a in value_materia:
