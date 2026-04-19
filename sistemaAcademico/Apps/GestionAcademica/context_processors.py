@@ -14,15 +14,19 @@ def acciones(request):
         'imprimir': [],
     }
 
-    usuario_id = request.session.get('usuario')
+    try:
+        usuario_id = request.session.get('usuario')
+    except AttributeError:
+        return resultado
+
     if not usuario_id:
         return resultado
 
     try:
-        resultado['permisos'] = ConfMenu.objects.filter(
+        resultado['permisos'] = list(ConfMenu.objects.filter(
             fk_permiso_modmenu__id_rol__fk_rol__id_usuario=usuario_id,
             id_genr_estado=97
-        ).values('descripcion')
+        ).values('descripcion', 'id_menu', 'id_padre', 'url', 'icono', 'orden'))
 
         acciones_usuario = ConfAccion.objects.filter(
             id_rol_id__fk_permiso_rol__id_rol__fk_rol__id_usuario=usuario_id

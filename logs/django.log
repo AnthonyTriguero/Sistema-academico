@@ -46,3 +46,792 @@ WARNING 2026-04-19 05:40:50,109 log Method Not Allowed (POST): /usuario_temp/43
 WARNING 2026-04-19 05:40:50,109 log Method Not Allowed (POST): /usuario_temp/43
 WARNING 2026-04-19 05:40:50,110 log Method Not Allowed (POST): /usuario_temp/43
 WARNING 2026-04-19 05:40:50,110 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:50:52,751 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:50:53,106 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,107 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,107 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,107 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,107 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,108 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,108 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,108 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,108 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,108 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,108 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,130 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:53,130 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,130 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,130 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,130 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,130 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,130 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,131 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,131 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,131 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,131 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,131 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,142 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:53,143 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,143 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,143 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,143 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,143 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,143 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,144 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,144 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,144 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,144 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,144 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,159 views Intento de login fallido para usuario: legacy01
+ERROR 2026-04-19 05:50:53,160 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,160 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,161 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,161 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,161 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,161 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,161 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,161 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,162 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,162 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,162 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,196 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:53,196 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,197 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,198 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,198 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,566 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:50:53,567 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,567 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,567 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,567 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,567 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,567 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,567 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,583 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:50:53,583 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,583 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,583 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,584 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,587 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,601 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:53,601 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:53,602 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,078 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:54,079 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:54,079 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,079 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,079 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,079 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,079 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,079 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,080 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,080 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,080 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,080 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,090 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:50:54,816 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:54,816 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:54,816 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,816 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,816 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,816 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,816 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,816 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,829 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:54,829 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:54,829 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,830 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,842 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:50:54,842 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:50:54,842 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,842 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,843 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,843 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,843 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,843 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,843 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,843 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,844 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:50:54,844 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,322 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:51:35,677 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:35,678 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,678 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,679 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,679 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,679 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,679 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,679 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,680 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,680 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,680 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,696 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:35,696 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,697 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,698 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,698 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,709 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:35,710 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:35,710 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,710 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,710 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,710 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,710 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,710 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,711 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,711 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,711 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,711 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,728 views Intento de login fallido para usuario: legacy01
+ERROR 2026-04-19 05:51:35,728 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,729 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,730 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,730 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,761 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:35,761 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:35,761 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:35,762 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,113 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:51:36,113 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:36,113 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,113 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,114 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,125 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:51:36,126 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:36,126 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,126 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,126 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,126 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,126 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,127 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,127 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,127 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,127 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,127 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,139 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:36,139 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:36,139 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,139 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,139 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,140 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,541 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:36,542 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:36,542 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,542 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,542 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,542 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,542 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,542 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,543 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,543 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,543 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,543 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:36,553 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:51:37,280 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:37,280 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,281 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,282 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,294 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:37,294 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:37,294 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,295 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,295 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,295 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,295 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,295 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,295 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,296 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,296 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,296 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,308 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:51:37,308 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:51:37,308 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,309 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:51:37,310 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,010 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:52:11,364 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,365 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,365 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,365 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,366 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,382 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:11,382 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,382 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,382 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,382 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,394 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:11,395 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,395 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,395 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,395 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,395 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,395 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,396 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,396 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,396 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,396 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,396 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,407 views Intento de login fallido para usuario: legacy01
+ERROR 2026-04-19 05:52:11,408 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,408 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,409 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,409 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,440 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:11,440 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,440 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,440 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,441 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,789 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:52:11,789 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,802 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:52:11,802 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,802 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,802 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,802 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,802 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,802 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,803 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,803 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,803 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,803 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,805 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,817 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:11,817 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:11,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,817 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,818 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,818 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,818 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,818 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,818 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:11,818 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,224 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:12,224 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:12,224 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,225 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,235 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:52:12,961 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:12,962 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,962 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,963 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,963 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,963 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,974 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:12,974 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:12,974 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,974 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,974 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,974 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,974 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,975 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,975 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,975 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,975 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,975 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,986 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:12,986 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:12,987 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,325 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:52:39,705 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:39,706 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,706 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,706 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,706 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,706 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,707 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,707 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,707 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,707 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,707 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,724 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:39,724 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:39,724 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,724 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,725 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,726 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,738 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:39,739 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:39,739 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,739 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,739 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,739 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,740 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,740 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,740 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,740 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,740 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,740 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,753 views Intento de login fallido para usuario: legacy01
+ERROR 2026-04-19 05:52:39,753 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:39,754 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,754 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,754 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,754 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,754 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,754 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,755 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,755 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,755 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,755 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,789 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:39,789 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:39,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,789 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:39,790 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,146 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:52:40,147 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:40,147 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,147 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,148 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,148 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,148 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,148 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,148 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,148 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,149 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,149 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,162 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:52:40,162 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:40,162 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,163 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,163 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,163 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,163 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,164 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,164 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,164 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,164 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,164 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,178 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:40,178 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:40,178 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,179 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,180 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,180 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,584 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:40,584 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:40,585 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,585 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,585 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,585 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,585 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,585 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,586 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,586 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,586 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,586 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:40,597 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:52:41,352 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:41,353 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:41,353 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,353 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,353 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,353 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,354 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,354 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,354 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,354 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,354 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,354 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,367 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:41,368 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:41,368 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,368 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,368 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,368 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,369 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,369 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,369 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,369 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,369 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,369 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,383 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:52:41,383 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:52:41,383 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,384 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,385 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:52:41,385 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:39,833 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:53:40,192 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:53:40,192 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,193 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,193 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,193 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,193 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,193 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,194 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,194 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,194 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:40,194 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,260 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:53:41,956 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:53:41,957 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,957 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,958 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,958 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:41,958 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,304 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:53:42,304 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:53:42,304 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,304 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,304 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,305 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,317 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:53:42,318 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,318 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,319 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:42,319 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:53:43,486 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:54:12,388 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:54:12,769 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:54:12,770 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,771 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,772 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:12,772 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:13,850 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:54:14,635 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:54:14,636 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:54:14,636 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,636 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,636 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,636 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,637 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,637 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,637 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,637 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,637 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:14,637 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,011 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:54:15,011 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:54:15,011 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,012 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,012 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,012 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,012 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,012 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,012 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,013 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,013 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,013 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,031 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:54:15,032 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:54:15,032 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,032 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,032 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,033 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,033 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,033 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,033 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,033 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,033 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:15,034 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:54:16,196 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:55:45,437 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:55:45,791 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:55:45,791 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,792 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,792 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,792 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,792 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,792 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,792 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,793 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,793 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:45,793 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:46,851 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:55:47,567 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:55:47,567 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,568 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,569 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,569 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,916 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:55:47,916 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,917 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,930 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:55:47,931 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:55:47,931 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,931 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,931 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,931 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,931 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,931 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,932 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,932 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,932 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:47,932 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:55:49,422 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:56:19,004 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+ERROR 2026-04-19 05:56:19,360 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:56:19,361 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,361 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,361 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,361 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,361 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,362 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,362 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,362 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,362 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:19,362 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:20,425 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:56:21,132 views Intento de login fallido para usuario: testuser1
+ERROR 2026-04-19 05:56:21,132 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:56:21,132 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,132 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,132 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,133 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,487 views Intento de login fallido para usuario: inactivo1
+ERROR 2026-04-19 05:56:21,487 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:56:21,487 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,487 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,487 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,488 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,501 views Intento de login fallido para usuario: noexiste
+ERROR 2026-04-19 05:56:21,501 views Error en login: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+WARNING 2026-04-19 05:56:21,501 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,501 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,501 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,501 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,502 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,502 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,502 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,502 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,502 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:21,502 log Method Not Allowed (POST): /
+WARNING 2026-04-19 05:56:23,004 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:57:54,797 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:57:56,203 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:57:57,241 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:59:00,332 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:59:01,752 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:59:02,798 middleware Acceso no autorizado a /inicio/
+WARNING 2026-04-19 05:59:30,431 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:59:31,857 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
+WARNING 2026-04-19 05:59:32,917 middleware Acceso no autorizado a /inicio/
