@@ -4,8 +4,8 @@ from django.views.generic import ListView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfRol
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from django.views.decorators.cache import cache_page
 
 

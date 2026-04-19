@@ -3,7 +3,9 @@ from django.db import models
 # from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 # from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import MovDetalleEmpleado
-from sistemaAcademico.Apps.Validaciones import *
+from sistemaAcademico.Apps.Validaciones import (
+    validate_cedula, validar_espacios, validate_celular, anio_lectivos,
+)
 
 
 class MantPersona(models.Model):

@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import ListView, CreateView, UpdateView
 from sistemaAcademico.Apps.GestionAcademica.Forms.Configuracion.forms_configuraciones import unidad_form,EditarU_form
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfEmpresa, ConfUsuario
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 import socket
 
 

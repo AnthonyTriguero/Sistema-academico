@@ -12,13 +12,13 @@ from django.views.generic import UpdateView
 
 from sistemaAcademico import settings
 from sistemaAcademico.Apps.GestionAcademica import forms
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfCorreosSmpt, UsuarioTemp
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantPersona
 
 from django.core.mail import EmailMultiAlternatives
 
 from email.mime.text import MIMEText
-from smtplib import *
+from smtplib import SMTP_SSL, SMTP, SMTPException
 
 logger = logging.getLogger(__name__)
 

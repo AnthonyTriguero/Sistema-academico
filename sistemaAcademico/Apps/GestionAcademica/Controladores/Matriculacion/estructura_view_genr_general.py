@@ -1,8 +1,8 @@
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django_filters.views import FilterView
 from django.urls import reverse_lazy
-from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.froms_general import *
+from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.froms_general import GenrGeneral_1
 from django.shortcuts import render, redirect
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse

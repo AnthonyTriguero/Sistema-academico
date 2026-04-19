@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import CreateView, ListView, UpdateView,View
 
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfAccion
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 import socket
 from django.views.decorators.cache import cache_page
 

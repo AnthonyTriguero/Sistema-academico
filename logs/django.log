@@ -77,3 +77,6 @@ WARNING 2026-04-19 06:49:32,294 middleware Acceso no autorizado a /inicio/
 WARNING 2026-04-19 06:49:59,685 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
 WARNING 2026-04-19 06:50:01,100 utils Usuario autenticado con SHA1 legacy. Necesita migración de contraseña.
 WARNING 2026-04-19 06:50:02,149 middleware Acceso no autorizado a /inicio/
+ERROR 2026-04-19 12:21:41,086 form_file Error en formulario de archivo
+ERROR 2026-04-19 12:21:53,743 form_file Error en formulario de archivo
+ERROR 2026-04-19 12:47:42,732 form_file Error en formulario de archivo

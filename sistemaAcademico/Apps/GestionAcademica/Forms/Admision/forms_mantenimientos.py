@@ -2,8 +2,9 @@ from django import forms
 from django.db.models import Q
 from django.forms import ModelForm
 
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantPersona
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import MovMatriculacionEstudiante
 
 TPA = ['ECUADOR', 'AREGENTINA', 'MEXICO', 'AMERICA SAMOA', 'BOUVET ISLAND', 'ESTADOS UNIDOS', 'VENEZUELA', 'COLOMBIA']
 GEN = [('MASCULINO', 'FEMENINO')]

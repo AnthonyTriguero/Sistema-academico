@@ -1,30 +1,92 @@
 from django.urls import path
 
-from sistemaAcademico.Apps.GestionAcademica.Controladores.API.Estructuras_view_api import *
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Configuraciones.estructura_view_SMTP import smtp_view, \
-    smtp_edit, smtp_reenviar
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Configuraciones.Estructura_view_reportes import *
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Reportes_especiales.Estructura_view_reportes import *
-from sistemaAcademico.Apps.GestionAcademica.Filters.filters_admision import GEN_autocomplete, TID_autocomplete
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Matriculacion.Estructura_view_aniolectivo import *
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Matriculacion.asignacion_curso import *
-from .Controladores.Matriculacion.Estructura_view_curso import ListaCurso, CreateCurso, UpdateCurso, DeleteCurso
-from .Controladores.Matriculacion.Estructura_view_horasDocentes import CreateHorasDocentes
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Matriculacion.Estructura_view_horario_curso import *
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Matriculacion.Asignacion_materia_curso import *
-from .Controladores.Matriculacion.estructura_view_materiaProfesor import *
-from .Controladores.Matriculacion.Estructura_view_asignacionprof import *
-from .Controladores.Matriculacion.estructura_view_genr_general import *
+# Vistas principales (login, inicio, salir, etc.)
+from .views import login, salir, inicio, timeout, pantalla_principal
+
+# API
+from .Controladores.API.Estructuras_view_api import Menu_api, Unidad_Edu, Usuario
+
+# Configuraciones
+from .Controladores.Configuraciones.estructura_view_SMTP import smtp_view, smtp_edit, smtp_reenviar
+from .Controladores.Configuraciones.Estructura_view_reportes import (
+    reporte_usuarios, reporte_roles, reporte_horarioEst, reporte_horarioprofe,
+)
+from .Controladores.Configuraciones.Estructura_view_empresa import (
+    empresas, NuevaEmpre, UpdateEmpre, eliminar_empresa,
+)
+from .Controladores.Configuraciones.Estructura_view_usuarios import (
+    Usuarios, CreateUsuario, UpdateUsuario, eliminar_usuario,
+)
+from .Controladores.Configuraciones.Estructura_view_menu import (
+    Menu, CreateMenu, UpdateMenu, eliminar_menu,
+)
+from .Controladores.Configuraciones.Estructura_view_acciones import (
+    Acciones, Add_Accion, Edit_acciones,
+)
+from .Controladores.Configuraciones.Estructura_view_modulo import (
+    Modulo, NuevoModulo, UpdateModulo, eliminar_modulo,
+)
+from .Controladores.Configuraciones.Estructura_view_permisos import (
+    ListPermisos, CreatePermiso, UpdatePermisos,
+)
+from .Controladores.Configuraciones.Estructura_view_roles import (
+    Roles, nuevo_rol, editar_rol, eliminar_rol,
+)
+
+# Mantenimiento
+from .Controladores.Mantenimiento.Estructura_view_mantenimientos import (
+    Empleado, Estudiante, Estudiantes, NuevoEstudiante, NuevoEmpleado,
+    UpdateEmpleado, UpdateEstudiante, ConsultarEstudiante, ConsultarEmpleado,
+    eliminar_estudiante, eliminar_empleado,
+)
+from .Controladores.Mantenimiento.Estructura_view_reportes import (
+    reporte_estudiante, reporte_empleado, Reportepor_estudiante,
+)
+from .Controladores.Mantenimiento.Estructura_view_consultas import consultas
+from .Controladores.Mantenimiento.Estructura_view_movimientos import movimientos
+from .Controladores.Mantenimiento.Estructura_view_procesos import procesos
+
+# Reportes especiales
 from .Controladores.Reportes_especiales.Estructura_view_reportes import reportes
-from .Controladores.Matriculacion.Estructura_view_registronotas import *
-from .views import *
-from .Controladores.Configuraciones.Estructura_view_acciones import *
-from .Controladores.Mantenimiento.Estructura_view_mantenimientos import *
-from .Diccionario.Estructuras_tablas_conf import *
-from .Diccionario.Estructuras_tablas_mant import *
-from .Diccionario.Estructuras_tablas_mov import *
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Matriculacion.Estructura_view_file import Upload_File
-from sistemaAcademico.Apps.GestionAcademica.Controladores.Matriculacion.Estructura_view_file_ex import Upload_FileEX
+
+# Matriculación
+from .Controladores.Matriculacion.View_estudiante import (
+    filtro_estudiantes, filtro_estudiantes_lista,
+    FilterEstudinatesestado, FilterTipoEstudinates,
+)
+from .Controladores.Matriculacion.Estructura_view_aniolectivo import (
+    List_AnioLectivo, CreateAniolectivo, UpdateAniolectivo, eliminar_Aniolectivo,
+)
+from .Controladores.Matriculacion.asignacion_curso import (
+    ListaAnioElectivoCurso, Create_Mov_Aniolectivo_curso,
+    Update_Mov_Aniolectivo_curso, eliminar_Asignacion_Curso,
+)
+from .Controladores.Matriculacion.Estructura_view_curso import (
+    ListaCurso, CreateCurso, UpdateCurso, DeleteCurso,
+)
+from .Controladores.Matriculacion.Estructura_view_horasDocentes import CreateHorasDocentes
+from .Controladores.Matriculacion.Estructura_view_horario_curso import (
+    HorarioCurso, ListViewHorario, CrearHorarioCurso, UpdateHorario, deleteHorario,
+)
+from .Controladores.Matriculacion.Asignacion_materia_curso import (
+    Listar_materia_curso, Crear_materia_curso, Editar_materia_curso, eliminar_materia_curso,
+)
+from .Controladores.Matriculacion.estructura_view_materiaProfesor import MovMateriProfesorList
+from .Controladores.Matriculacion.Estructura_view_asignacionprof import (
+    List_docente, List_docente_asignado, List_docente_sin_asignar, eliminar_profesor,
+)
+from .Controladores.Matriculacion.estructura_view_genr_general import (
+    General, CreateGeneral, UpdateGeneral,
+)
+from .Controladores.Matriculacion.Estructura_view_registronotas import (
+    List_Notas, CrearRegistroNotas, ListarMateria, Update_notas,
+    ListarMateria2, Update_notas2, Update_notasSupre, Delete_notas,
+)
+from .Controladores.Matriculacion.Estructura_view_file import Upload_File
+from .Controladores.Matriculacion.Estructura_view_file_ex import Upload_FileEX
+
+# Autocomplete
+from .Filters.filters_admision import GEN_autocomplete, TID_autocomplete
 
 urlpatterns = [
     # --- Autenticación ---

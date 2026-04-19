@@ -2,9 +2,8 @@ import logging
 
 from django.views.generic import ListView, UpdateView
 from django.urls import reverse_lazy
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import Mov_Materia_profesor
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.http import HttpResponseRedirect, HttpResponse

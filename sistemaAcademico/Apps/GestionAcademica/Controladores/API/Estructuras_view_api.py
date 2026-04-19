@@ -3,9 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from sistemaAcademico.Apps.GestionAcademica.Serializers.Configuracion.serializers import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfMenu, ConfEmpresa, ConfUsuario
+from sistemaAcademico.Apps.GestionAcademica.Serializers.Configuracion.serializers import menuSerializers
 from django.db.models import Q
 
 logger = logging.getLogger(__name__)

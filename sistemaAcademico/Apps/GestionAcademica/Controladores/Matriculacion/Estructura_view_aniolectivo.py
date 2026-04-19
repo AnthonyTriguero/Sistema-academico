@@ -1,7 +1,9 @@
 from django.db.models import Q
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy
-from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_matriculacion import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantAnioLectivo
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
+from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_matriculacion import Aniolectivo, UpAniolectivo
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 

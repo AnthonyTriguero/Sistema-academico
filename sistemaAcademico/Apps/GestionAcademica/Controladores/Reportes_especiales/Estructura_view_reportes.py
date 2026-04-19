@@ -16,8 +16,6 @@ from reportlab.lib.units import cm
 from reportlab.platypus import Paragraph, Table, TableStyle, Image
 from reportlab.lib import colors
 
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
 
 def reportes(request):
     if 'usuario' in request.session:

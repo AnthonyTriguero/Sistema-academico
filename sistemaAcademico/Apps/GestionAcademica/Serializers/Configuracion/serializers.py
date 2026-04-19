@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import (
+    ConfModulo, ConfMenu, ConfEmpresa, ConfUsuario,
+)
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 
 

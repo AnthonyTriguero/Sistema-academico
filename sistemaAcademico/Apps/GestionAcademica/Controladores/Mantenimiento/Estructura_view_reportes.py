@@ -10,15 +10,14 @@ from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from xhtml2pdf import pisa
 from django.views.generic import View
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import MovMatriculacionEstudiante
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantPersona, MantEstudiante, MantEmpleado
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import MovMatriculacionEstudiante, MovCabCurso
 from sistemaAcademico.utils import link_callback
 from django.urls import reverse_lazy
 
 from django.views.generic.detail import DetailView
 
-from sistemaAcademico.Apps.GestionAcademica.Forms.Admision.forms_mantenimientos import *
 
 def reporte_estudiante(request):
     if 'usuario' in request.session:

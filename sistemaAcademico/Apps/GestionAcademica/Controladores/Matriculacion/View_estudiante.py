@@ -8,7 +8,9 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
-from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_estudiantes_filter import *
+from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_estudiantes_filter import (
+    FilterEstudinatesestadoforms, FilterTipoEstudinatesforms,
+)
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import (
     MovMatriculacionEstudiante, Mov_Aniolectivo_curso, MovDetalleMateriaCurso,
     Mov_Materia_profesor, MovDetalleRegistroNotas, MovCabRegistroNotas,

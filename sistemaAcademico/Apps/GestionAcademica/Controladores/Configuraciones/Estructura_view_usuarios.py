@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 import os
 from django.views.decorators.cache import cache_page
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario, ConfRol
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from sistemaAcademico.Apps.GestionAcademica import forms
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse_lazy

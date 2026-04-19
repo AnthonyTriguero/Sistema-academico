@@ -6,11 +6,9 @@ from django.db.models import Q
 from sistemaAcademico.Apps.GestionAcademica import models
 from django import forms
 import django_filters
-from django.forms.widgets import *
 from django.utils import timezone
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import Mov_Horario_materia
 
 
 class HorarioCursoForm(ModelForm):

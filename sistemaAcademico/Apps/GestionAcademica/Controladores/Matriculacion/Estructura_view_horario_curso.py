@@ -6,13 +6,15 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, TemplateView, DeleteView
 
 from django.utils import timezone
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantAnioLectivo
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import (
+    Mov_Horario_materia, Mov_Aniolectivo_curso, MovDetalleMateriaCurso, Mov_Materia_profesor,
+)
 import socket
-from sistemaAcademico.Apps.GestionAcademica import forms
 from django.utils import timezone
-from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_mov_horario_curso import *
+from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_mov_horario_curso import HorarioCursoForm
 
 logger = logging.getLogger(__name__)
 

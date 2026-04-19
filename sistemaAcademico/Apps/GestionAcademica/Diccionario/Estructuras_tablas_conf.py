@@ -1,7 +1,12 @@
 from django.db import models
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantPersona
-from sistemaAcademico.Apps.Validaciones import *
+from sistemaAcademico.Apps.Validaciones import (
+    validate_nombre, validar_espacios, validar_select, identificar, espacios,
+    validate_celular, validate_codigo, validate_descripcion,
+    longitud, alfanumerico, espaciosusu,
+    longitudPassword, minuscula, mayuscula, numero, alfanumericoPassword,
+)
 
 
 class ConfEmpresa(models.Model):

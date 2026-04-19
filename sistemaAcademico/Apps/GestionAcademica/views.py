@@ -3,23 +3,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
-from .Controladores.Configuraciones.Estructura_view_empresa import *
-from .Controladores.Configuraciones.Estructura_view_usuarios import *
-from .Controladores.Configuraciones.Estructura_view_reportes_conf import *
-from .Controladores.Configuraciones.Estructura_view_menu import *
-from .Controladores.Configuraciones.Estructura_view_acciones import *
-from .Controladores.Configuraciones.Estructura_view_modulo import *
-from .Controladores.Configuraciones.Estructura_view_permisos import *
-from .Controladores.Configuraciones.Estructura_view_roles import *
-from .Controladores.Mantenimiento.Estructura_view_reportes import *
-from .Controladores.Mantenimiento.Estructura_view_consultas import *
-from .Controladores.Mantenimiento.Estructura_view_mantenimientos import *
-from .Controladores.Mantenimiento.Estructura_view_movimientos import *
-from .Controladores.Mantenimiento.Estructura_view_procesos import *
-from .Controladores.Matriculacion.View_estudiante import *
-
-from .Diccionario.Estructuras_tablas_conf import ConfMenu, ConfUsuario, ConfModulo_menu, ConfPermiso
-from .Diccionario.Estructuras_tablas_mant import *
+from .Diccionario.Estructuras_tablas_conf import (
+    ConfMenu, ConfUsuario, ConfModulo_menu, ConfPermiso, UsuarioTemp,
+)
+from .Diccionario.Estructuras_tablas_mant import MantPersona, MantEstudiante, MantEmpleado
 from .utils import verify_password, hash_password, needs_password_migration
 
 logger = logging.getLogger(__name__)

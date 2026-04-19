@@ -7,8 +7,20 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Forms.Admision.forms_mantenimientos import *
+from django.db.models import Q
+
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario, UsuarioTemp
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import (
+    MantPersona, MantEstudiante, MantAnioLectivo, MantEmpleado,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import (
+    Mov_Materia_profesor, MovMatriculacionEstudiante, MovCabCurso,
+)
+from sistemaAcademico.Apps.GestionAcademica.Forms.Admision.forms_mantenimientos import (
+    EmpleadoForm, EditarEmpleadoForm, ConsultarEmpleadoForm,
+    EstudianteForm, EstudianteEditForm, ConsultarEstudianteForm, Editarste,
+)
 
 logger = logging.getLogger(__name__)
 

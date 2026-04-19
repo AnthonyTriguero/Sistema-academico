@@ -7,10 +7,21 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.db.models import AutoField
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import (
+    GenrGeneral, GenrHistorial,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import (
+    MantPersona, MantRepresentante, MantEstudiante, MantAnioLectivo, MantEmpleado,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import (
+    ConfEmpresa, ConfModulo, ConfRol, ConfMenu, ConfUsuario, ConfModulo_menu,
+    ConfAccion, UsuarioTemp, ConfPermiso, ConfCorreosSmpt,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import (
+    MovAdmision, MovCabCurso, MovCabRegistroNotas, Mov_Aniolectivo_curso,
+    MovDetalleMateriaCurso, MovDetalleRegistroNotas, MovMatriculacionEstudiante,
+    Mov_Materia_profesor, Mov_Horario_materia, Mov_Horas_docente,
+)
 
 
 

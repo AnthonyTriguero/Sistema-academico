@@ -2,8 +2,7 @@ import logging
 
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import Mov_Materia_profesor, MovDetalleMateriaCurso
 from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_mov_anio_curso import MovMateriaProfesorForm
 from django.contrib import messages
 from django.db.models import Q

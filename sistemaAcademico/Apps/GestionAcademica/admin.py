@@ -1,7 +1,10 @@
 from django.contrib import admin
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import (
+    ConfUsuario, ConfEmpresa, ConfModulo, ConfRol, ConfMenu,
+    ConfPermiso, ConfModulo_menu, ConfAccion,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantPersona
 # Register your models here.
 
 

@@ -2,7 +2,11 @@ from sistemaAcademico.Apps.GestionAcademica import models
 from django import forms
 from django.forms import ModelForm
 from betterforms.multiform import MultiModelForm
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import (
+    ConfCorreosSmpt, ConfModulo, ConfMenu, ConfEmpresa, ConfUsuario,
+    UsuarioTemp, ConfAccion, ConfPermiso,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from django_select2.forms import Select2MultipleWidget
 from django_select2.forms import ModelSelect2MultipleWidget
 from collections import OrderedDict

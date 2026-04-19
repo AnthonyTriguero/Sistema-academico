@@ -2,8 +2,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render,redirect
 from django.utils import timezone
 from django.urls import reverse_lazy
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfPermiso
 from django.views.generic import ListView, CreateView, UpdateView
 import socket
 from sistemaAcademico.Apps.GestionAcademica.Forms.Configuracion.forms_configuraciones import Permisosform

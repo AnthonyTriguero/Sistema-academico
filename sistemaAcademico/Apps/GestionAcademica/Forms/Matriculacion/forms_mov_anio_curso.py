@@ -1,10 +1,9 @@
 from django import forms
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import *
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import *
-from crispy_forms.layout import *
-from crispy_forms.helper import *
-from django.forms.widgets import *
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantEmpleado
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import (
+    Mov_Aniolectivo_curso, Mov_Horas_docente, Mov_Materia_profesor, MovDetalleMateriaCurso,
+)
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from django.template import Template, Context
 
 class Mov_Aniolectivo_curso_forms(forms.ModelForm):
