@@ -1,0 +1,48 @@
+WARNING 2026-04-19 05:09:31,312 middleware Acceso no autorizado a /favicon.ico
+WARNING 2026-04-19 05:11:35,266 views Intento de login fallido para usuario: admin
+WARNING 2026-04-19 05:13:40,208 views Intento de login fallido para usuario: anthony
+WARNING 2026-04-19 05:33:37,332 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,332 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,332 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,333 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,333 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,333 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,337 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,337 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,337 log Method Not Allowed (POST): /reporte_roles/
+WARNING 2026-04-19 05:33:37,337 log Method Not Allowed (POST): /reporte_roles/
+ERROR 2026-04-19 05:37:21,574 context Error while parsing CSS file
+Traceback (most recent call last):
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\context.py", line 519, in parseExternal
+    result = self.parse(cssFile.getData())
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 458, in parse
+    src, stylesheet = self._parseStylesheet(src)
+                      ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 566, in _parseStylesheet
+    src, ruleset = self._parseRuleset(src)
+                   ~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 918, in _parseRuleset
+    src, selectors = self._parseSelectorGroup(src)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 928, in _parseSelectorGroup
+    src, selector = self._parseSelector(src)
+                    ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 942, in _parseSelector
+    src, selector = self._parseSimpleSelector(src)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 999, in _parseSimpleSelector
+    src, selector = self._parseSelectorPseudo(src, selector)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 1080, in _parseSelectorPseudo
+    raise self.ParseError(msg, src, ctxsrc)
+xhtml2pdf.w3c.cssParser.CSSParseError: Selector Pseudo Function closing ')' not found:: (':not(', ':focus-visible){outl')
+WARNING 2026-04-19 05:40:50,108 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,108 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,108 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,108 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,109 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,109 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,109 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,109 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,110 log Method Not Allowed (POST): /usuario_temp/43
+WARNING 2026-04-19 05:40:50,110 log Method Not Allowed (POST): /usuario_temp/43

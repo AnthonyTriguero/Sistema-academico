@@ -1,32 +1,47 @@
-from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import *
+import logging
+from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfMenu, ConfAccion
+
+logger = logging.getLogger(__name__)
 
 
 def acciones(request):
-    Agregar = []
-    Editar = []
-    Eliminar = []
-    Imprimir = []
-    permiso = ConfMenu.objects.filter(fk_permiso_modmenu__id_rol__fk_rol__id_usuario=request.session.get('usuario'), id_genr_estado=97).values('descripcion')
-    a = ConfAccion.objects.filter(id_rol_id__fk_permiso_rol__id_rol__fk_rol__id_usuario=request.session.get('usuario'))
-    for accion in a:
+    """Context processor para permisos y acciones del usuario."""
+    resultado = {
+        'permisos': [],
+        'agregar': [],
+        'editar': [],
+        'eliminar': [],
+        'imprimir': [],
+    }
+
+    usuario_id = request.session.get('usuario')
+    if not usuario_id:
+        return resultado
+
+    try:
+        resultado['permisos'] = ConfMenu.objects.filter(
+            fk_permiso_modmenu__id_rol__fk_rol__id_usuario=usuario_id,
+            id_genr_estado=97
+        ).values('descripcion')
+
+        acciones_usuario = ConfAccion.objects.filter(
+            id_rol_id__fk_permiso_rol__id_rol__fk_rol__id_usuario=usuario_id
+        ).prefetch_related('id_menu')
+
+        for accion in acciones_usuario:
             if accion.descripcion == 'Agregar':
-                for m in accion.id_menu.all():
-                    Agregar.append(m)
+                resultado['agregar'].extend(accion.id_menu.all())
+            elif accion.descripcion == 'Editar':
+                resultado['editar'].extend(
+                    accion.id_menu.all().values('id_menu', 'descripcion', 'url'))
+            elif accion.descripcion == 'Eliminar':
+                resultado['eliminar'].extend(
+                    accion.id_menu.all().values('id_menu', 'descripcion', 'url'))
+            elif accion.descripcion == 'Imprimir':
+                resultado['imprimir'].extend(
+                    accion.id_menu.all().values('id_menu', 'descripcion', 'url'))
 
-            if accion.descripcion == 'Editar':
-                for m in accion.id_menu.all().values('id_menu','descripcion','url'):
-                    Editar.append(m)
+    except Exception as e:
+        logger.error(f"Error en context_processor acciones: {e}")
 
-            if accion.descripcion == 'Eliminar':
-                for m in accion.id_menu.all().values('id_menu','descripcion','url'):
-                    Eliminar.append(m)
-
-            if accion.descripcion == 'Imprimir':
-                for m in accion.id_menu.all().values('id_menu','descripcion','url'):
-                    Imprimir.append(m)
-
-    return {'permisos':permiso,'agregar':Agregar,'editar':Editar,'eliminar':Eliminar,'imprimir':Imprimir}
-
-
-
-
+    return resultado

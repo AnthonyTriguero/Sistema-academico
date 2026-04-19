@@ -39,11 +39,9 @@ class CreateUsuario(CreateView):
         form = self.form_class(request.POST)
         if form.is_valid():
             usuario = form.save()
-            var_contra = usuario.clave
-            h = hashlib.new("sha1")
-            var_contra = str.encode(var_contra)
-            h.update(var_contra)
-            usuario.clave = h.hexdigest()
+            # Usar hashing seguro PBKDF2 en lugar de SHA1
+            from sistemaAcademico.Apps.GestionAcademica.utils import hash_password
+            usuario.clave = hash_password(usuario.clave)
             usuario.save()
             return redirect(self.get_success_url())
         else:

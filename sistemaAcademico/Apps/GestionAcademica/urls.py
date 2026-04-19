@@ -151,7 +151,7 @@ urlpatterns = [
     path('reporte_empleado/' + 'timeout/', timeout, name='timeout_reporte_empleado'),
     # ---------Django-Autocomplete-Filters----------
     path('TID_autocomplete/', TID_autocomplete.as_view(), name='TID_autocomplete'),
-    path('GEN_autocomplete/', GEN_autocomplete, name='GEN_autocomplete'),
+    path('GEN_autocomplete/', GEN_autocomplete.as_view(), name='GEN_autocomplete'),
     # --------------Matriculacion-------------------
     path('anio_lectivo/', List_AnioLectivo.as_view(), name='anio_lectivo'),
     path('Editar_Aniolectivo/<int:pk>', UpdateAniolectivo.as_view(), name='editarAniolectivo'),

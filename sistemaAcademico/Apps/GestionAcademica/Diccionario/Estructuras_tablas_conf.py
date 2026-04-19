@@ -131,7 +131,7 @@ class ConfUsuario(models.Model):
     id_usuario = models.AutoField(primary_key=True)
     usuario = models.CharField(max_length=45, unique=True, blank=False, null=False, validators=[
                                validate_nombre, longitud, alfanumerico, espaciosusu])
-    clave = models.CharField(max_length=45, blank=False, null=False, validators=[
+    clave = models.CharField(max_length=256, blank=False, null=False, validators=[
                              longitudPassword, minuscula, mayuscula, numero, espacios, alfanumericoPassword])
     id_persona = models.ForeignKey(
         MantPersona, on_delete=models.CASCADE, db_column='id_persona')
@@ -196,7 +196,7 @@ class UsuarioTemp(models.Model):
     id_usuario_temp = models.AutoField(primary_key=True)
     usuario = models.CharField(max_length=45, unique=True, blank=False, null=False, validators=[
                                validate_nombre,])
-    clave = models.CharField(max_length=45, blank=False, null=False, validators=[
+    clave = models.CharField(max_length=256, blank=False, null=False, validators=[
                                numero, espacios, ])
     fecha_limite = models.DateField(blank=True, null=True)
     fecha_creacion = models.DateField(
