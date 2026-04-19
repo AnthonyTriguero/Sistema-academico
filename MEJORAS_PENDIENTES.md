@@ -3,10 +3,9 @@
 ## Completadas
 - [x] Refactorizar controladores grandes (Estructura_view_usuarios.py 872 → 67 líneas)
 - [x] Reemplazar print() por logging en todos los controladores (12 archivos)
+- [x] Migrar SHA1 a PBKDF2 en Estructura_view_file.py, Estructura_view_file_ex.py y estructura_view_SMTP.py: eliminado `hashlib.new("sha1")`, reemplazado por `hash_password()` de utils.py
 
 ## Prioridad alta
-
-- [ ] Migrar SHA1 en Estructura_view_file.py y file_ex.py: ambos archivos aún usan `hashlib.new("sha1")` para crear contraseñas de UsuarioTemp al importar estudiantes desde Excel. Cambiar a `hash_password()` de utils.py
 - [ ] Corregir wildcard imports (`from module import *`): views.py, urls.py y varios controladores usan `import *` lo que contamina el namespace y dificulta rastrear de dónde viene cada clase/función
 - [x] Eliminar las ~40 rutas duplicadas de timeout en urls.py: con el middleware de autenticación centralizado, las rutas tipo `path('modulo/timeout/', timeout)` son innecesarias
 - [x] Eliminar `import pickle` no utilizado en urls.py

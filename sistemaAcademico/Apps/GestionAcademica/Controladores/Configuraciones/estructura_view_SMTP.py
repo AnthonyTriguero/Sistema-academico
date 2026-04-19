@@ -1,5 +1,5 @@
-import hashlib
 import logging
+from sistemaAcademico.Apps.GestionAcademica.utils import hash_password
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, get_object_or_404
@@ -30,11 +30,8 @@ def smtp_reenviar(request,pk):
         form = forms.UsuarioTempForm(request.POST)
         if(form.is_valid()):
             cualquiera = form.save()
-            h = hashlib.new("sha1")
             pwd = cualquiera.clave
-            var_contra = str.encode(cualquiera.clave)
-            h.update(var_contra)
-            cualquiera.clave = h.hexdigest()
+            cualquiera.clave = hash_password(cualquiera.clave)
             cualquiera.save()
             update = UsuarioTemp.objects.get(id_usuario_temp=cualquiera.id_usuario_temp)
             update.id_persona=persona

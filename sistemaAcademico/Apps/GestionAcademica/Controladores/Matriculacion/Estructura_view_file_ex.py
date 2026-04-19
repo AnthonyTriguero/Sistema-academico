@@ -9,7 +9,7 @@ from sistemaAcademico.Apps.GestionAcademica.Forms.Admision.form_file import Uplo
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
-import hashlib
+from sistemaAcademico.Apps.GestionAcademica.utils import hash_password
 
 import os
 from django.shortcuts import render
@@ -107,14 +107,11 @@ class Upload_FileEX(View):
                                 matriculacion.save()
                                 logger.debug("Persona guardada: %s", personSave)
                                 try:
-                                    h = hashlib.new("sha1")
-                                    var_contra = str.encode(cedula)
-                                    h.update(var_contra)
                                     rol = ConfRol.objects.filter(codigo='003').first()
                                     if rol:
-                                        UsuarioTemp.objects.create(usuario=cedula,clave=h.hexdigest(),id_rol=rol,id_persona=personSave)
-                                except:
-                                    pass
+                                        UsuarioTemp.objects.create(usuario=cedula,clave=hash_password(cedula),id_rol=rol,id_persona=personSave)
+                                except Exception:
+                                    logger.exception("Error al crear UsuarioTemp para cédula %s", cedula)
                                 messages.success(request, 'Ingreso correcto', extra_tags='safe')
                         else:
                             logger.warning("Campo incorrecto")

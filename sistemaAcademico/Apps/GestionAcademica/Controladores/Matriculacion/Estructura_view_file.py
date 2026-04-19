@@ -9,7 +9,7 @@ from sistemaAcademico.Apps.GestionAcademica.Forms.Admision.form_file import Uplo
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
-import hashlib
+from sistemaAcademico.Apps.GestionAcademica.utils import hash_password
 
 import os
 from django.shortcuts import render
@@ -132,12 +132,9 @@ class Upload_File(View):
                                     id_mov_anioelectivo_curso=Mov_Aniolectivo_curso.objects.get(id_mov_anioelectivo_curso=id_mov_anioelectivo_curso),estado=GenrGeneral.objects.get(nombre='INACTIVO'),fecha_ingreso=timezone.now(),usuario_ing=usuario.usuario,terminal_ing=socket.gethostname())
                                     matriculacion.save()
                                     logger.debug("Persona guardada: %s", personSave)
-                                    h = hashlib.new("sha1")
-                                    var_contra = str.encode(cedula)
-                                    h.update(var_contra)
                                     rol = ConfRol.objects.filter(codigo='003').first()
                                     if rol:
-                                        UsuarioTemp.objects.create(usuario=cedula,clave=h.hexdigest(),id_rol=rol,id_persona=personSave)
+                                        UsuarioTemp.objects.create(usuario=cedula,clave=hash_password(cedula),id_rol=rol,id_persona=personSave)
                                     
                             else:
                                 messages.error(request, 'La cedula {0} es incorrecta'.format(cedula))
