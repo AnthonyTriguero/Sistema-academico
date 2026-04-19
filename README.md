@@ -237,6 +237,8 @@ Disponibles desde los módulos de Configuraciones y Mantenimiento.
 - El sistema de permisos es custom (no usa el de Django auth) basado en `ConfRol`, `ConfPermiso` y `ConfAccion`
 - Logging centralizado con `logging` en todos los controladores (sin `print()`)
 - Reportes separados del CRUD en `Estructura_view_reportes_conf.py`
+- Permisos cacheados en sesión al hacer login (evita queries repetidas en cada request)
+- URLs organizadas por sección, sin rutas de timeout duplicadas
 
 ## Tests
 
