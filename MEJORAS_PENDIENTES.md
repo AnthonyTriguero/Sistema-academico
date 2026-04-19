@@ -19,6 +19,9 @@
 - [ ] Corregir el handler500 en views.py: `Error500.as_error_view()` llama `r.render()` que falla con `HttpResponseNotAllowed`. Usar `django.views.defaults.server_error` o manejar el caso
 - [ ] Agregar `select_related`/`prefetch_related` en las vistas que hacen N+1 queries: los reportes de roles iteran `confRol.id_rol.all()` por cada usuario sin prefetch
 - [ ] Proteger las vistas de eliminación contra GET: `eliminar_usuario`, `eliminar_estudiante`, etc. aceptan GET y muestran confirmación, pero no validan CSRF en el formulario de confirmación
+- [ ] Reportes Excel/PDF cargan todos los registros en memoria sin límite: con miles de estudiantes puede consumir mucha RAM. Agregar paginación o streaming
+- [ ] `List_docente_sin_asignar` itera todos los profesores en Python en vez de filtrar en BD: mover la lógica a un queryset con annotate/exclude
+- [ ] Campos DateTimeField en la BD tienen valores como strings (legacy de cymysql): limpiar datos o agregar conversor custom
 
 ## Prioridad baja
 
