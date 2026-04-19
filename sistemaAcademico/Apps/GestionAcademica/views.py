@@ -61,6 +61,9 @@ def login(request):
 
                 request.session['usuario'] = usu.id_usuario
                 request.session['val'] = False
+                # Precargar permisos en sesión para evitar queries en cada request
+                from .context_processors import cargar_permisos_en_sesion
+                cargar_permisos_en_sesion(request, usu.id_usuario)
                 return redirect("Academico:inicio")
 
             # Buscar usuario temporal
