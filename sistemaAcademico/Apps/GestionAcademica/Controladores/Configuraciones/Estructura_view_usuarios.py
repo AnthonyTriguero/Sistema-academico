@@ -16,9 +16,48 @@ from django.urls import reverse
 class Usuarios(ListView):
     model = ConfUsuario
     template_name = 'sistemaAcademico/Configuraciones/Usuarios/usuario.html'
-    queryset = ConfUsuario.objects.filter(id_genr_estado=97).select_related(
-        'id_persona', 'id_genr_tipo_usuario')
     context_object_name = 'lista_usuarios'
+    paginate_by = 20
+
+    def get_queryset(self):
+        queryset = ConfUsuario.objects.filter(id_genr_estado=97).select_related(
+            'id_persona', 'id_genr_tipo_usuario')
+        
+        # Búsqueda
+        search = self.request.GET.get('search', '').strip()
+        if search:
+            queryset = queryset.filter(
+                Q(usuario__icontains=search) |
+                Q(id_persona__nombres__icontains=search) |
+                Q(id_persona__apellidos__icontains=search)
+            )
+        
+        # Filtro por tipo de usuario
+        tipo_usuario = self.request.GET.get('tipo_usuario', '')
+        if tipo_usuario:
+            queryset = queryset.filter(id_genr_tipo_usuario=tipo_usuario)
+        
+        # Ordenamiento
+        order_by = self.request.GET.get('order_by', 'usuario')
+        direction = self.request.GET.get('direction', 'asc')
+        
+        valid_fields = ['usuario', 'id_persona__nombres', 'id_persona__apellidos']
+        if order_by in valid_fields:
+            if direction == 'desc':
+                order_by = f'-{order_by}'
+            queryset = queryset.order_by(order_by)
+        
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search', '')
+        context['order_by'] = self.request.GET.get('order_by', 'usuario')
+        context['direction'] = self.request.GET.get('direction', 'asc')
+        context['tipo_usuario'] = self.request.GET.get('tipo_usuario', '')
+        context['tipos_usuario'] = GenrGeneral.objects.filter(tipo='TUS')
+        context['total_usuarios'] = ConfUsuario.objects.filter(id_genr_estado=97).count()
+        return context
 
 
 class CreateUsuario(CreateView):
@@ -55,10 +94,19 @@ class UpdateUsuario(UpdateView):
 
 
 def eliminar_usuario(request, id):
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
+        return HttpResponseRedirect('/timeout/')
+    
     usuarios = ConfUsuario.objects.get(id_usuario=id)
     inactivo = GenrGeneral.objects.get(idgenr_general=98)
+    
     if request.method == 'POST':
+        # Solo POST puede eliminar
         usuarios.id_genr_estado = inactivo
         usuarios.save()
+        logger.info(f"Usuario {usuarios.usuario} eliminado por {request.session.get('usuario')}")
         return redirect('Academico:usuarios')
+    
+    # GET muestra confirmación (cargado en modal)
     return render(request, 'sistemaAcademico/Configuraciones/Usuarios/eliminar.html', {'usuario': usuarios})

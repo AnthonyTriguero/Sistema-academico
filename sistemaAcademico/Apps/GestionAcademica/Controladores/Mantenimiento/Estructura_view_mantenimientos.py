@@ -29,22 +29,18 @@ class Empleado(ListView):
     model = MantPersona
     context_object_name = 'empleado'
     template_name = 'sistemaAcademico/Admision/Mantenimiento/admision_personas.html'
-    def get_queryset(self):
-        return self.model.objects.filter(Q(estado=97),
-                                    Q(id_genr_tipo_usuario=20) |
-                                    Q(id_genr_tipo_usuario=21)
-                                    ).select_related('id_genr_tipo_usuario')
+    paginate_by = 20
 
-    def get_context_data(self,**kwargs):
-        contexto = {}
-        contexto['empleado'] = self.get_queryset()
-        return contexto
+    def get_queryset(self):
+        return self.model.objects.filter(
+            Q(estado=97),
+            Q(id_genr_tipo_usuario=20) | Q(id_genr_tipo_usuario=21)
+        ).select_related('id_genr_tipo_usuario')
 
     def get(self, request, *args, **kwargs):
         if 'usuario' in request.session:
-            return render(request, self.template_name, self.get_context_data())
-        else:
-            return HttpResponseRedirect('timeout/')
+            return super().get(request, *args, **kwargs)
+        return HttpResponseRedirect('timeout/')
 
 class Estudiantes(DetailView):
     model = MantPersona
@@ -88,38 +84,59 @@ class Estudiante(ListView):
     model = MantPersona
     context_object_name = 'mantenimiento'
     template_name = 'sistemaAcademico/Admision/Mantenimiento/Estudiante.html'
+    paginate_by = 20
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(
+            estado=97, id_genr_tipo_usuario=19
+        ).select_related('id_genr_tipo_usuario')
+        
+        # Búsqueda
+        search = self.request.GET.get('search', '').strip()
+        if search:
+            queryset = queryset.filter(
+                Q(nombres__icontains=search) |
+                Q(apellidos__icontains=search) |
+                Q(identificacion__icontains=search)
+            )
+        
+        # Ordenamiento
+        order_by = self.request.GET.get('order_by', 'apellidos')
+        direction = self.request.GET.get('direction', 'asc')
+        
+        valid_fields = ['nombres', 'apellidos', 'identificacion', 'id_persona']
+        if order_by in valid_fields:
+            if direction == 'desc':
+                order_by = f'-{order_by}'
+            queryset = queryset.order_by(order_by)
+        
+        return queryset.values('id_persona', 'nombres', 'apellidos', 'identificacion')
 
     def get_context_data(self, **kwargs):
-        context = {}
-        if kwargs:
-            context['msj'] = kwargs['msj']
-        queryset = self.model.objects.filter(estado=97, id_genr_tipo_usuario=19).select_related(
-            'id_genr_tipo_usuario').values(
-            'id_persona', 'nombres',
-            'apellidos',
-            'identificacion')
+        context = super().get_context_data(**kwargs)
         lista = []
-        for i in queryset.values():
-            newDict = {}
-            usuarioTemp = UsuarioTemp.objects.filter(id_persona=i['id_persona']).first()
-            if usuarioTemp:
-
-                newDict = {'val': True}
-            else:
-                newDict = {'val': False}
+        for i in context['mantenimiento']:
+            newDict = {'val': bool(UsuarioTemp.objects.filter(id_persona=i['id_persona']).first())}
             newDict.update(i)
             lista.append(newDict)
-
-            newDict={}
-
-
-        context['mantenimiento']=lista
+        context['mantenimiento'] = lista
+        
+        # Agregar parámetros de búsqueda y ordenamiento al contexto
+        context['search'] = self.request.GET.get('search', '')
+        context['order_by'] = self.request.GET.get('order_by', 'apellidos')
+        context['direction'] = self.request.GET.get('direction', 'asc')
+        
+        # Estadísticas
+        context['total_estudiantes'] = self.model.objects.filter(
+            estado=97, id_genr_tipo_usuario=19
+        ).count()
+        
         return context
-    def get(self,request, *args, **kwargs):
+
+    def get(self, request, *args, **kwargs):
         if 'usuario' in request.session:
-            return render(request, self.template_name, self.get_context_data())
-        else:
-            return redirect('Academico:timeout')
+            return super().get(request, *args, **kwargs)
+        return redirect('Academico:timeout')
 
 
 class NuevoEmpleado(CreateView):
@@ -177,17 +194,23 @@ class ConsultarEmpleado(UpdateView):
 
 
 def eliminar_empleado(request, id):
-    if 'usuario' in request.session:
-        empleados = MantPersona.objects.get(id_persona=id)
-        inactivo = GenrGeneral.objects.get(idgenr_general=98)
-        if request.method == 'POST':
-            empleados.estado = inactivo
-            empleados.save()
-            return redirect('Academico:empleado')
-        return render(request, 'sistemaAcademico/Admision/Mantenimiento/form_eliminar_empleado.html',
-                    {'empleado': empleados})
-    else:
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
         return redirect('Academico:timeout')
+    
+    empleados = MantPersona.objects.get(id_persona=id)
+    inactivo = GenrGeneral.objects.get(idgenr_general=98)
+    
+    if request.method == 'POST':
+        # Solo POST puede eliminar
+        empleados.estado = inactivo
+        empleados.save()
+        logger.info(f"Empleado {empleados.nombres} {empleados.apellidos} eliminado por {request.session.get('usuario')}")
+        return redirect('Academico:empleado')
+    
+    # GET muestra confirmación (cargado en modal)
+    return render(request, 'sistemaAcademico/Admision/Mantenimiento/form_eliminar_empleado.html',
+                {'empleado': empleados})
 
 class NuevoEstudiante(CreateView):
     model = MantPersona
@@ -348,13 +371,20 @@ class DatosEstudiante(UpdateView):
 
 
 def eliminar_estudiante(request, id):
-    if 'usuario' in request.session:
-        estudiantes = MantPersona.objects.get(id_persona=id)
-        inactivo = GenrGeneral.objects.get(idgenr_general=98)
-        if request.method == 'POST':
-            estudiantes.estado = inactivo
-            estudiantes.save()
-            return redirect('Academico:estudiante')
-        return render(request, 'sistemaAcademico/Admision/Mantenimiento/form_eliminar_estudiante.html',
-                    {'estudiante': estudiantes})
-    return redirect('Academico:timeout')
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
+        return redirect('Academico:timeout')
+    
+    estudiantes = MantPersona.objects.get(id_persona=id)
+    inactivo = GenrGeneral.objects.get(idgenr_general=98)
+    
+    if request.method == 'POST':
+        # Solo POST puede eliminar
+        estudiantes.estado = inactivo
+        estudiantes.save()
+        logger.info(f"Estudiante {estudiantes.nombres} {estudiantes.apellidos} eliminado por {request.session.get('usuario')}")
+        return redirect('Academico:estudiante')
+    
+    # GET muestra confirmación (cargado en modal)
+    return render(request, 'sistemaAcademico/Admision/Mantenimiento/form_eliminar_estudiante.html',
+                {'estudiante': estudiantes})

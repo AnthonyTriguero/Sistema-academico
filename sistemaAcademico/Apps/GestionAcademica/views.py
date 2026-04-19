@@ -102,12 +102,18 @@ class Error404(TemplateView):
 class Error500(TemplateView):
     template_name = 'errores/500.html'
 
-    @classmethod
-    def as_error_view(cls):
-        v = cls.as_view()
 
-        def view(request):
-            r = v(request)
-            r.render()
-            return r
-        return view
+def handler_500(request):
+    """
+    Handler personalizado para errores 500.
+    Renderiza el template de error 500 de forma segura.
+    """
+    try:
+        return render(request, 'errores/500.html', status=500)
+    except Exception:
+        # Si falla el render del template, usar respuesta básica
+        from django.http import HttpResponse
+        return HttpResponse(
+            '<h1>Error 500</h1><p>Error interno del servidor. Contacte con el administrador.</p>',
+            status=500
+        )

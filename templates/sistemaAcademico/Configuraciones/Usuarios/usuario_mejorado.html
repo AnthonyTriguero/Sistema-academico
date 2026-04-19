@@ -1,0 +1,240 @@
+{% extends 'base/base.html' %}
+
+{% block sidebar %}
+{% endblock sidebar %}
+{% block modulo %}
+{% endblock modulo %}
+{% block encabezado %}
+{% endblock encabezado %}
+{% block footer %}
+{% endblock footer %}
+
+{% block contenido_principal %}
+<header class="cuadro_titulo bg-gradient-primary"><h4 align="center" class="title">Configuracion | Usuario</h4>
+</header>
+<br/>
+
+<!-- Barra de herramientas -->
+<div class="row mb-3">
+    <div class="col-md-8">
+        {% for m in permisos %}
+        {% for acciones in agregar %}
+        {% if m.descripcion == acciones.descripcion and acciones.url == 'Academico:usuarios' %}
+        <a class="btn bg-gradient-primary text-light" href="{% url 'Academico:nuevo_usuario' %}">
+            <i class="fas fa-plus"></i> Agregar Usuario
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <button class="btn bg-gradient-success text-light" onclick="exportarExcel()">
+            <i class="fas fa-file-excel"></i> Exportar
+        </button>
+    </div>
+    <div class="col-md-4 text-right">
+        <span class="badge badge-info badge-pill" style="font-size: 14px;">
+            <i class="fas fa-users"></i> Total: {{ total_usuarios }} usuarios
+        </span>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <!-- Barra de búsqueda y filtros -->
+    <div class="card-header py-3">
+        <div class="row">
+            <div class="col-md-4">
+                <h6 class="m-0 font-weight-bold text-primary mt-2">Usuarios disponibles en el sistema</h6>
+            </div>
+            <div class="col-md-8">
+                <form method="get" class="form-inline float-right">
+                    <select name="tipo_usuario" class="form-control mr-2">
+                        <option value="">Todos los tipos</option>
+                        {% for tipo in tipos_usuario %}
+                        <option value="{{ tipo.idgenr_general }}" {% if tipo_usuario == tipo.idgenr_general|stringformat:"s" %}selected{% endif %}>
+                            {{ tipo.nombre }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" 
+                               placeholder="Buscar usuario o nombre..." 
+                               value="{{ search }}"
+                               style="min-width: 250px;">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            {% if search or tipo_usuario %}
+                            <a href="?" class="btn btn-secondary">
+                                <i class="fas fa-times"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-body">
+        {% if search or tipo_usuario %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <i class="fas fa-info-circle"></i> 
+            Mostrando resultados filtrados
+            {% if search %}<strong>"{{ search }}"</strong>{% endif %}
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        
+        <div class="table-responsive">
+            <table cellspacing="0" class="table table-bordered" id="dtBasicExample" width="100%">
+                <thead>
+                <tr class="bg-gradient-primary text-light text-center">
+                    <th>Codigo</th>
+                    <th>
+                        <a href="?search={{ search }}&tipo_usuario={{ tipo_usuario }}&order_by=usuario&direction={% if order_by == 'usuario' and direction == 'asc' %}desc{% else %}asc{% endif %}" 
+                           class="text-light text-decoration-none">
+                            Usuario
+                            {% if order_by == 'usuario' %}
+                                <i class="fas fa-sort-{{ direction }}"></i>
+                            {% else %}
+                                <i class="fas fa-sort"></i>
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?search={{ search }}&tipo_usuario={{ tipo_usuario }}&order_by=id_persona__nombres&direction={% if order_by == 'id_persona__nombres' and direction == 'asc' %}desc{% else %}asc{% endif %}" 
+                           class="text-light text-decoration-none">
+                            Nombre
+                            {% if order_by == 'id_persona__nombres' %}
+                                <i class="fas fa-sort-{{ direction }}"></i>
+                            {% else %}
+                                <i class="fas fa-sort"></i>
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th>Tipo usuario</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for u in lista_usuarios %}
+                <tr>
+                    <td><strong>{{u.id_usuario}}</strong></td>
+                    <td><strong>{{u.usuario}}</strong></td>
+                    <td><strong>{{u.id_persona.nombres}} {{u.id_persona.apellidos}}</strong></td>
+                    <td><strong>{{u.id_genr_tipo_usuario}}</strong></td>
+                    <td>
+                        <div align="center">
+                        <a class="btn btn-sm bg-gradient-primary text-light"
+                           href="{% url 'Academico:editar_usuario' u.id_usuario %}" 
+                           title="Editar {{u.usuario}}" data-toggle="tooltip">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <a type="button" class="btn btn-sm bg-gradient-danger text-light" 
+                           onclick="confirmarEliminacion('{% url 'Academico:eliminar_usuario' u.id_usuario %}', '{{u.usuario}}')"
+                           title="Eliminar {{u.usuario}}" data-toggle="tooltip">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted">
+                        <i class="fas fa-inbox fa-3x mb-3 mt-3"></i>
+                        <p>No se encontraron usuarios{% if search %} con el criterio "{{ search }}"{% endif %}</p>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    {% if is_paginated %}
+    <div class="card-footer">
+        <nav>
+            <ul class="pagination justify-content-center mb-0">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1&search={{ search }}&tipo_usuario={{ tipo_usuario }}&order_by={{ order_by }}&direction={{ direction }}">&laquo; Primera</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ search }}&tipo_usuario={{ tipo_usuario }}&order_by={{ order_by }}&direction={{ direction }}">Anterior</a>
+                    </li>
+                {% endif %}
+                <li class="page-item active">
+                    <span class="page-link">
+                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        <small class="ml-2">({{ page_obj.paginator.count }} registros)</small>
+                    </span>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ search }}&tipo_usuario={{ tipo_usuario }}&order_by={{ order_by }}&direction={{ direction }}">Siguiente</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&search={{ search }}&tipo_usuario={{ tipo_usuario }}&order_by={{ order_by }}&direction={{ direction }}">Última &raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock contenido_principal %}
+
+{% block extrajs %}
+<div class="modal fade" id="eliminar_usuarios" tabindex="-1" role="dialog"></div>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    var $ = jQuery.noConflict();
+    
+    // Activar tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+    
+    function editar_usuario(url) {
+        $('#editar_usuarios').load(url,function () {
+            $(this).modal('show');
+        });
+    }
+
+    function confirmarEliminacion(url, usuario) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            html: `Se eliminará al usuario:<br><strong>${usuario}</strong>`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: '<i class="fas fa-trash"></i> Sí, eliminar',
+            cancelButtonText: '<i class="fas fa-times"></i> Cancelar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#eliminar_usuarios').load(url, function() {
+                    $(this).modal('show');
+                });
+            }
+        });
+    }
+    
+    function exportarExcel() {
+        const search = '{{ search }}';
+        const tipo = '{{ tipo_usuario }}';
+        let url = '/usuarios/exportar/?';
+        if (search) url += `search=${search}&`;
+        if (tipo) url += `tipo_usuario=${tipo}`;
+        window.location.href = url;
+    }
+</script>
+{% endblock extrajs %}

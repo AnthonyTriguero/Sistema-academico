@@ -1,9 +1,7 @@
 import logging
-import socket
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.utils import timezone
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.db.models import Q
@@ -12,12 +10,12 @@ from sistemaAcademico.Apps.GestionAcademica.Forms.Matriculacion.forms_estudiante
     FilterEstudinatesestadoforms, FilterTipoEstudinatesforms,
 )
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mov import (
-    MovMatriculacionEstudiante, Mov_Aniolectivo_curso, MovDetalleMateriaCurso,
-    Mov_Materia_profesor, MovDetalleRegistroNotas, MovCabRegistroNotas,
+    MovMatriculacionEstudiante,
 )
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_mant import MantEstudiante, MantPersona
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_genr import GenrGeneral
 from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario
+from sistemaAcademico.Apps.GestionAcademica.Services.matriculacion_service import MatriculacionService
 
 logger = logging.getLogger(__name__)
 
@@ -71,64 +69,37 @@ class FilterEstudinatesestado(UpdateView):
         request.POST = request.POST.copy()
         self.object = self.get_object()
         form = self.form_class(request.POST)
+        
+        # Obtener usuario y estado del formulario
         usuario = ConfUsuario.objects.get(id_usuario=request.session.get('usuario'))
-        quimestres = GenrGeneral.objects.filter(tipo='QUI')
-        listaErrores = []
-        val = False
-
         id_estado_form = request.POST['estado']
         estado = GenrGeneral.objects.get(idgenr_general=id_estado_form)
-
-        if estado:
-            if estado.nombre == 'MATRICULADO':
-                id_matricula = kwargs['pk']
-                matricula = MovMatriculacionEstudiante.objects.get(
-                    id_matriculacion_estudiante=id_matricula)
-
-                if matricula.estado.nombre != 'MATRICULADO':
-                    id_aniolectivo_curso = matricula.id_mov_anioelectivo_curso.id_mov_anioelectivo_curso
-                    curso = Mov_Aniolectivo_curso.objects.get(
-                        id_mov_anioelectivo_curso=id_aniolectivo_curso)
-                    materia_curso = MovDetalleMateriaCurso.objects.filter(
-                        id_mov_anio_lectivo_curso=curso.id_mov_anioelectivo_curso)
-
-                    for i in materia_curso:
-                        try:
-                            materia = Mov_Materia_profesor.objects.get(
-                                id_detalle_materia_curso=i.id_detalle_materia_curso)
-                            if materia:
-                                for qui in quimestres:
-                                    anio_lectivo = Mov_Aniolectivo_curso.objects.get(
-                                        id_mov_anioelectivo_curso=i.id_mov_anio_lectivo_curso.id_mov_anioelectivo_curso)
-                                    detaRegistroNotas = MovDetalleRegistroNotas(
-                                        id_matriculacion_estudiante=matricula,
-                                        id_materia_profesor=materia,
-                                        id_general_quimestre=qui,
-                                    )
-                                    detaRegistroNotas.save()
-                                    cabRegistro = MovCabRegistroNotas(
-                                        id_detalle_registro_notas=detaRegistroNotas,
-                                        id_mov_anioelectivo_curso=anio_lectivo,
-                                        promedio_curso_1q=0,
-                                        promedio_curso_2q=0,
-                                        promedio_curso_general=0,
-                                        fecha_ingreso=timezone.now(),
-                                        usuario_ing=usuario.usuario,
-                                        terminal_ing=socket.gethostname(),
-                                    )
-                                    cabRegistro.save()
-                            val = True
-                        except Exception as e:
-                            logger.error(f"Error al matricular: {e}")
-                            val = False
-                            listaErrores.append(f'{i} no tiene un profesor asignado')
-            else:
-                val = True
-
-        if val:
-            return super().post(request, **kwargs)
-        else:
-            return HttpResponseRedirect(self.success_url)
+        
+        # Obtener la matriculación
+        id_matricula = kwargs['pk']
+        matricula = MovMatriculacionEstudiante.objects.get(
+            id_matriculacion_estudiante=id_matricula
+        )
+        
+        # Si el estado es MATRICULADO, usar el servicio de matriculación
+        if estado.nombre == 'MATRICULADO':
+            exito, errores = MatriculacionService.matricular_estudiante(
+                matricula=matricula,
+                usuario=usuario
+            )
+            
+            if not exito:
+                # Mostrar errores al usuario
+                for error in errores:
+                    messages.error(request, error)
+                logger.warning(f"Matriculación fallida para estudiante {matricula.id_estudiante}: {errores}")
+                return HttpResponseRedirect(self.success_url)
+            
+            # Matriculación exitosa, continuar con el guardado del estado
+            logger.info(f"Estudiante {matricula.id_estudiante} matriculado exitosamente")
+        
+        # Guardar el cambio de estado
+        return super().post(request, **kwargs)
 
 
 class FilterTipoEstudinates(UpdateView):

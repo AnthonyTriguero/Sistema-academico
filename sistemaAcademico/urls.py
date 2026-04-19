@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf import settings
 from django.views import static
-from sistemaAcademico.Apps.GestionAcademica.views import Error404, Error500
+from sistemaAcademico.Apps.GestionAcademica.views import Error404, handler_500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,7 +24,7 @@ else:
 
 # Error handlers
 handler404 = Error404.as_view()
-handler500 = Error500.as_error_view()
+handler500 = handler_500
 
 # Media files
 from django.contrib.staticfiles.urls import static as static_url

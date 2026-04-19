@@ -13,20 +13,15 @@ class Roles(ListView):
     model = ConfRol
     template_name = 'sistemaAcademico/Configuraciones/Roles/rol.html'
     context_object_name = 'roles'
-    
-    def get_queryset(self):
-        return self.model.objects.filter(id_genr_estado=97).values('id_rol','codigo','nombre')
+    paginate_by = 20
 
-    def get_context_data(self,**kwargs):
-        contexto = {}
-        contexto['roles'] = self.get_queryset()
-        return contexto
+    def get_queryset(self):
+        return self.model.objects.filter(id_genr_estado=97).values('id_rol', 'codigo', 'nombre')
 
     def get(self, request, *args, **kwargs):
         if 'usuario' in request.session:
-            return render(request, self.template_name, self.get_context_data())
-        else:
-            return HttpResponseRedirect('timeout/')
+            return super().get(request, *args, **kwargs)
+        return HttpResponseRedirect('timeout/')
 
 def roles(request):
     if 'usuario' in request.session:
@@ -65,13 +60,19 @@ def editar_rol(request, id):
 
 
 def eliminar_rol(request, id):
-    if 'usuario' in request.session:
-        roles = ConfRol.objects.get(id_rol=id)
-        inactivo = GenrGeneral.objects.get(idgenr_general=98)
-        if request.method == 'POST':
-            roles.id_genr_estado = inactivo
-            roles.save()
-            return redirect('Academico:roles')
-        return render(request, 'sistemaAcademico/Configuraciones/Roles/eliminar_rol.html', {'roles': roles})
-    else:
-        return HttpResponseRedirect('timeout/')
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
+        return HttpResponseRedirect('/timeout/')
+    
+    roles = ConfRol.objects.get(id_rol=id)
+    inactivo = GenrGeneral.objects.get(idgenr_general=98)
+    
+    if request.method == 'POST':
+        # Solo POST puede eliminar
+        roles.id_genr_estado = inactivo
+        roles.save()
+        logger.info(f"Rol {roles.nombre} eliminado por {request.session.get('usuario')}")
+        return redirect('Academico:roles')
+    
+    # GET muestra confirmación (cargado en modal)
+    return render(request, 'sistemaAcademico/Configuraciones/Roles/eliminar_rol.html', {'roles': roles})

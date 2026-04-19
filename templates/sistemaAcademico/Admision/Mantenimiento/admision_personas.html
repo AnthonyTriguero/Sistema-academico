@@ -12,12 +12,24 @@
 <header class="cuadro_titulo rounded bg-gradient-primary text-center"><h4 class="title text-light">Mantenimiento | Empleados</h4></header>
 <br/>
 <br/>
-<a href="{% url 'Academico:registro_empleado' %}" type="button" class="btn bg-gradient-primary text-light">  Agregar <span class="glyphicon glyphicon-plus"></span></a>
-<br/>
-<br/>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <a href="{% url 'Academico:registro_empleado' %}" type="button" class="btn bg-gradient-primary text-light">
+            <i class="fas fa-plus"></i> Agregar
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'Academico:exportar_empleados' %}" class="btn btn-success" data-toggle="tooltip" title="Exportar a Excel">
+            <i class="fas fa-file-excel"></i> Exportar
+        </a>
+    </div>
+</div>
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Registro de empleados</h6>
+        <span class="badge badge-info badge-pill" style="font-size: 14px;">
+            <i class="fas fa-users"></i> Total: {{ page_obj.paginator.count }} empleados
+        </span>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -41,9 +53,9 @@
                     <td>{{m.identificacion}}</td>
                     <td>{{m.id_genr_tipo_usuario}}{{m.nombre}}</td>
                     <td class="text-center">
-                        <a href="{% url 'Academico:consultar_empleado' m.id_persona %}" class="btn bg-gradient-success text-light" title="Consultar {{m.nombres}}"><i class="fas fa fa-male"></i></a>
-                        <a href="{% url 'Academico:editar_empleado' m.id_persona %}" class="btn bg-gradient-primary text-light" title="Editar {{m.nombres}}"><i class="fas fa-info-circle"></i></a>
-                        <a onclick="modal('{% url 'Academico:eliminar_empleado' m.id_persona %}')" class="btn bg-gradient-danger text-light" title="Eliminar {{m.nombres}}"><i class="fas fa-exclamation-triangle"></i></a>
+                        <a href="{% url 'Academico:consultar_empleado' m.id_persona %}" class="btn btn-sm bg-gradient-success text-light" data-toggle="tooltip" title="Consultar {{m.nombres}}"><i class="fas fa-eye"></i></a>
+                        <a href="{% url 'Academico:editar_empleado' m.id_persona %}" class="btn btn-sm bg-gradient-primary text-light" data-toggle="tooltip" title="Editar {{m.nombres}}"><i class="fas fa-edit"></i></a>
+                        <a onclick="modal('{% url 'Academico:eliminar_empleado' m.id_persona %}')" class="btn btn-sm bg-gradient-danger text-light" data-toggle="tooltip" title="Eliminar {{m.nombres}}"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -51,10 +63,36 @@
             </table>
         </div>
     </div>
+    {% if is_paginated %}
+    <div class="card-footer">
+        <nav>
+            <ul class="pagination justify-content-center mb-0">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+                {% endif %}
+                <li class="page-item active">
+                    <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
 </div>
 {% endblock contenido_principal %}
 {% block extrajs %}
 <div class="modal fade" id="mostrar_modal" role="dialog">
 
 </div>
+
+<script>
+// Activar tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+</script>
 {% endblock extrajs %}

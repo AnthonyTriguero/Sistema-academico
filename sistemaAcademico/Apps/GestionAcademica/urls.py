@@ -45,6 +45,9 @@ from .Controladores.Mantenimiento.Estructura_view_reportes import (
 from .Controladores.Mantenimiento.Estructura_view_consultas import consultas
 from .Controladores.Mantenimiento.Estructura_view_movimientos import movimientos
 from .Controladores.Mantenimiento.Estructura_view_procesos import procesos
+from .Controladores.Mantenimiento.export_views import (
+    ExportarEstudiantesView, ExportarUsuariosView, ExportarEmpleadosView,
+)
 
 # Reportes especiales
 from .Controladores.Reportes_especiales.Estructura_view_reportes import reportes
@@ -151,6 +154,11 @@ urlpatterns = [
     path('eliminar_estudiante/<int:id>', eliminar_estudiante, name='eliminar_estudiante'),
     path('eliminar_empleado/<int:id>', eliminar_empleado, name='eliminar_empleado'),
     path('estudiantes/<int:pk>/', Estudiantes.as_view(), name='estudiantes'),
+    
+    # --- Exportación a Excel ---
+    path('estudiantes/exportar/', ExportarEstudiantesView.as_view(), name='exportar_estudiantes'),
+    path('usuarios/exportar/', ExportarUsuariosView.as_view(), name='exportar_usuarios'),
+    path('empleados/exportar/', ExportarEmpleadosView.as_view(), name='exportar_empleados'),
 
     # --- Reportes ---
     path('reporte_usuarios/', reporte_usuarios, name='reporte_usuarios'),

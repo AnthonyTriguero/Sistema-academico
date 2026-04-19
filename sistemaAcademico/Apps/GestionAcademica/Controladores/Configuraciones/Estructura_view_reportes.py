@@ -30,11 +30,14 @@ def reporte_usuarios(request):
             # print('el reporte es: ', comboR)
 
             if combo == 1:
-                usuarios = ConfUsuario.objects.filter(usuario=campo2)
+                # Optimización: select_related para evitar N+1 queries
+                usuarios = ConfUsuario.objects.select_related('id_persona', 'id_genr_tipo_usuario').filter(usuario=campo2)
             elif combo == 2:
-                usuarios = ConfUsuario.objects.filter(id_persona__nombres=campo2)
+                # Optimización: select_related para evitar N+1 queries
+                usuarios = ConfUsuario.objects.select_related('id_persona', 'id_genr_tipo_usuario').filter(id_persona__nombres=campo2)
             elif combo == 3:
-                usuarios = ConfUsuario.objects.all()
+                # Optimización: select_related para evitar N+1 queries
+                usuarios = ConfUsuario.objects.select_related('id_persona', 'id_genr_tipo_usuario').all()
             elif combo == 5:
                 return render(request, 'sistemaAcademico/reportes/reportes.html')
 
@@ -228,9 +231,11 @@ def reporte_roles(request):
             campo2 = request.POST.get('campo')
             combo = int(request.POST.get('combo'))
             if combo == 1:
-                rol = ConfUsuario.objects.all()
+                # Optimización: prefetch_related para evitar N+1 queries
+                rol = ConfUsuario.objects.select_related('id_persona').prefetch_related('id_rol').all()
             elif combo == 2:
-                rol = ConfUsuario.objects.filter(id_rol__nombre=campo2)
+                # Optimización: prefetch_related para evitar N+1 queries
+                rol = ConfUsuario.objects.select_related('id_persona').prefetch_related('id_rol').filter(id_rol__nombre=campo2)
             elif combo == 3:
                 return render(request, 'sistemaAcademico/reportes/reporterol.html')
 
@@ -430,9 +435,16 @@ def reporte_horarioEst(request):
             buscador1 = request.POST.get('buscador')
             combo = int(request.POST.get('combo'))
             if combo == 2:
+                # Optimización: select_related para evitar N+1 queries
                 horario = Mov_Horario_materia.objects.filter(
-                    id_materia_profesor__id_detalle_materia_curso__id_mov_anio_lectivo_curso__id_curso__nombre=buscador1).select_related(
-                    'id_materia_profesor', 'id_genr_dia')
+                    id_materia_profesor__id_detalle_materia_curso__id_mov_anio_lectivo_curso__id_curso__nombre=buscador1
+                ).select_related(
+                    'id_materia_profesor',
+                    'id_genr_dia',
+                    'id_materia_profesor__id_detalle_materia_curso',
+                    'id_materia_profesor__id_detalle_materia_curso__id_mov_anio_lectivo_curso',
+                    'id_materia_profesor__id_detalle_materia_curso__id_mov_anio_lectivo_curso__id_curso'
+                )
                 logger.debug("horario: %s", horario)
             elif combo == 3:
                 return render(request, 'sistemaAcademico/reportes/Horario_est.html')
@@ -480,8 +492,15 @@ def reporte_horarioprofe(request):
             buscador1 = request.POST.get('buscador')
             combo = int(request.POST.get('combo'))
             if combo == 2:
+                # Optimización: select_related para evitar N+1 queries
                 horario = Mov_Horario_materia.objects.filter(
-                    id_materia_profesor__id_empleado__id_persona__nombres=buscador1)
+                    id_materia_profesor__id_empleado__id_persona__nombres=buscador1
+                ).select_related(
+                    'id_materia_profesor',
+                    'id_genr_dia',
+                    'id_materia_profesor__id_empleado',
+                    'id_materia_profesor__id_empleado__id_persona'
+                )
 
             elif combo == 3:
                 return render(request, 'sistemaAcademico/reportes/Horarioprof.html')

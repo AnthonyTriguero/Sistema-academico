@@ -5,3 +5,6 @@ __pycache__/
 *.py[cod]
 db.sqlite3
 logs/*.log
+.vscode/
+*.xlsx
+test_*.py

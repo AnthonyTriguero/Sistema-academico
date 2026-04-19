@@ -152,13 +152,19 @@ def editar_empresa(request, id):
         return HttpResponseRedirect('timeout/')
 
 def eliminar_empresa(request, id):
-    if 'usuario' in request.session:
-        empresas = ConfEmpresa.objects.get(id_empresa=id)
-        inactivo = GenrGeneral.objects.get(idgenr_general=98)
-        if request.method == 'POST':
-            empresas.id_genr_estado = inactivo
-            empresas.save()
-            return redirect('Academico:empresas')
-        return render(request, 'sistemaAcademico/Configuraciones/Empresas/eliminar.html', {'empresa': empresas})
-    else:
-        return HttpResponseRedirect('timeout/')
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
+        return HttpResponseRedirect('/timeout/')
+    
+    empresas = ConfEmpresa.objects.get(id_empresa=id)
+    inactivo = GenrGeneral.objects.get(idgenr_general=98)
+    
+    if request.method == 'POST':
+        # Solo POST puede eliminar
+        empresas.id_genr_estado = inactivo
+        empresas.save()
+        logger.info(f"Empresa {empresas.nombre} eliminada por {request.session.get('usuario')}")
+        return redirect('Academico:empresas')
+    
+    # GET muestra confirmación (cargado en modal)
+    return render(request, 'sistemaAcademico/Configuraciones/Empresas/eliminar.html', {'empresa': empresas})

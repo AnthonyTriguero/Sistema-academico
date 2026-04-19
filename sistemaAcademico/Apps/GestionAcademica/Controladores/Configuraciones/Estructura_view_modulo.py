@@ -103,13 +103,23 @@ def editar_modulo(request,id):
     return render(request,'sistemaAcademico/Configuraciones/Modulos/editar_modulo.html',contexto)
 
 def eliminar_modulo(request,id):
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
+        return HttpResponseRedirect('/timeout/')
+    
     try:
         modulo = ConfModulo.objects.get(id_modulo=id)
+        
         if request.method == 'POST':
-           inactivo = GenrGeneral.objects.get(idgenr_general=98)
-           modulo.id_genr_estado = inactivo
-           modulo.save()
-           return redirect('Academico:modulo')
+            # Solo POST puede eliminar
+            inactivo = GenrGeneral.objects.get(idgenr_general=98)
+            modulo.id_genr_estado = inactivo
+            modulo.save()
+            logger.info(f"Módulo {modulo.nombre} eliminado por {request.session.get('usuario')}")
+            return redirect('Academico:modulo')
+        
+        # GET muestra confirmación (cargado en modal)
+        return render(request,'sistemaAcademico/Configuraciones/Modulos/eliminar_modulo.html',{'modulo':modulo})
     except Exception as e:
+        logger.error(f"Error al eliminar módulo {id}: {e}")
         raise e
-    return render(request,'sistemaAcademico/Configuraciones/Modulos/eliminar_modulo.html',{'modulo':modulo})

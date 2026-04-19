@@ -47,16 +47,22 @@ class UpdateMenu(UpdateView):
 #--------------------------------
 
 def eliminar_menu(request,id):
-    if 'usuario' in request.session:
-        menu = ConfMenu.objects.get(id_menu = id)
-        inactivo = GenrGeneral.objects.get(idgenr_general=98)
-        if request.method == 'POST':
-            menu.id_genr_estado = inactivo
-            menu.save()
-            return redirect('Academico:menu')
-        return render(request,'sistemaAcademico/Configuraciones/Menus/eliminar_menu.html',{'menu':menu})
-    else:
-        return HttpResponseRedirect('timeout/')
+    # Protección: requiere autenticación
+    if 'usuario' not in request.session:
+        return HttpResponseRedirect('/timeout/')
+    
+    menu = ConfMenu.objects.get(id_menu = id)
+    inactivo = GenrGeneral.objects.get(idgenr_general=98)
+    
+    if request.method == 'POST':
+        # Solo POST puede eliminar
+        menu.id_genr_estado = inactivo
+        menu.save()
+        logger.info(f"Menú {menu.nombre} eliminado por {request.session.get('usuario')}")
+        return redirect('Academico:menu')
+    
+    # GET muestra confirmación (cargado en modal)
+    return render(request,'sistemaAcademico/Configuraciones/Menus/eliminar_menu.html',{'menu':menu})
         
 class CreateMenu(CreateView):
     model = ConfMenu

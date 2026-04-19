@@ -6,7 +6,7 @@
 - [x] Migrar SHA1 a PBKDF2 en Estructura_view_file.py, Estructura_view_file_ex.py y estructura_view_SMTP.py: eliminado `hashlib.new("sha1")`, reemplazado por `hash_password()` de utils.py
 
 ## Prioridad alta
-- [ ] Corregir wildcard imports (`from module import *`): views.py, urls.py y varios controladores usan `import *` lo que contamina el namespace y dificulta rastrear de dónde viene cada clase/función
+- [x] Corregir wildcard imports (`from module import *`): reemplazados en 37 archivos (controladores, formularios, filtros, serializadores, diccionarios y admin.py) con imports explícitos. `manage.py check` pasa con 0 errores
 - [x] Eliminar las ~40 rutas duplicadas de timeout en urls.py: con el middleware de autenticación centralizado, las rutas tipo `path('modulo/timeout/', timeout)` son innecesarias
 - [x] Eliminar `import pickle` no utilizado en urls.py
 - [ ] Agregar paginación a los ListView: Usuarios, Estudiante, Empleado, Roles cargan todos los registros de golpe. Agregar `paginate_by = 20`

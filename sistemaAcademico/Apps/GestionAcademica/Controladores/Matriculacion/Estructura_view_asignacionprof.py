@@ -21,7 +21,13 @@ class List_docente(ListView):
     context_object_name = 'lista_profesor'
 
     def get_queryset(self):
-        return self.model.objects.filter(id_empleado__id_persona__estado=97)
+        # Optimización: select_related para evitar N+1 queries
+        return self.model.objects.filter(
+            id_empleado__id_persona__estado=97
+        ).select_related(
+            'id_empleado',
+            'id_empleado__id_persona'
+        )
 
     def get_context_data(self,**kwargs):
         contexto = {}
@@ -43,8 +49,17 @@ class List_docente_asignado(ListView):
             context = super(List_docente_asignado, self).get_context_data(**kwargs)
             lista = []
 
+            # Optimización: select_related y prefetch_related para evitar N+1 queries
             queryset = self.model.objects.filter(
-                id_empleado__id_persona__estado=97).prefetch_related('id_detalle_materia_curso')
+                id_empleado__id_persona__estado=97
+            ).select_related(
+                'id_empleado',
+                'id_empleado__id_persona'
+            ).prefetch_related(
+                'id_detalle_materia_curso',
+                'id_detalle_materia_curso__id_genr_materias',
+                'id_detalle_materia_curso__id_mov_anio_lectivo_curso'
+            )
             count = 1
             for materia in queryset:
                 logger.debug("materia: %s", materia)
@@ -61,17 +76,27 @@ class List_docente_asignado(ListView):
 class List_docente_sin_asignar(ListView):
     model = Mov_Materia_profesor
     template_name = 'sistemaAcademico/reportes/ProfesorSinAsignar.html'
-    queryset = Mov_Materia_profesor.objects.filter(id_empleado__id_persona__estado = 97)
+
+    def get_queryset(self):
+        # Optimización: usar annotate para filtrar en BD en vez de Python
+        from django.db.models import Count
+        return Mov_Materia_profesor.objects.filter(
+            id_empleado__id_persona__estado=97
+        ).select_related(
+            'id_empleado',
+            'id_empleado__id_persona'
+        ).prefetch_related(
+            'id_detalle_materia_curso'
+        ).annotate(
+            num_materias=Count('id_detalle_materia_curso')
+        ).filter(num_materias=0)
 
     def get(self, request):
         if 'usuario' in request.session:
-            context = {'lista_profesor_sin_asignar': None}
-            profesores = []
-            for q in self.queryset:
-                if not q.id_detalle_materia_curso.exists():
-                    profesores.append(q)
-                    logger.debug("profesores sin asignar: %s", profesores)
-            context['lista_profesor_sin_asignar'] = profesores
+            # Ahora la query ya está optimizada y filtrada en BD
+            profesores = self.get_queryset()
+            logger.debug("profesores sin asignar: %s", list(profesores))
+            context = {'lista_profesor_sin_asignar': profesores}
             return render(request, self.template_name, context)
         else:
             return HttpResponseRedirect('timeout/')
