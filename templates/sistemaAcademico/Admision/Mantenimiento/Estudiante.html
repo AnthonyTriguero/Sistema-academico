@@ -1,11 +1,6 @@
-{% extends 'base/base.html' %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block footer %}
+{% extends 'base/base_layout.html' %}
 
-{% endblock footer %}
+{% block title %}SA - Estudiante{% endblock title %}
 
 {% block contenido_principal %}
 
@@ -25,7 +20,7 @@
     </div>
     <div class="col-md-4 text-right">
         <span class="badge badge-info badge-pill" style="font-size: 14px;">
-            <i class="fas fa-users"></i> Total: {{ total_estudiantes }} estudiantes
+            <i class="fas fa-users"></i> Total: <span id="contadorResultados">{{ total_estudiantes }} estudiantes</span>
         </span>
     </div>
 </div>
@@ -38,40 +33,29 @@
                 <h6 class="m-0 font-weight-bold text-primary mt-2">Registro de estudiantes</h6>
             </div>
             <div class="col-md-6">
-                <form method="get" class="form-inline float-right">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control" 
-                               placeholder="Buscar por nombre, apellido o cédula..." 
-                               value="{{ search }}"
-                               style="min-width: 300px;">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </button>
-                            {% if search %}
-                            <a href="?" class="btn btn-secondary">
-                                <i class="fas fa-times"></i>
-                            </a>
-                            {% endif %}
-                        </div>
+                <div class="input-group float-right" style="max-width: 400px;">
+                    <input type="text" 
+                           id="buscadorEstudiante"
+                           class="form-control" 
+                           placeholder="Buscar por nombre, apellido o cédula..." 
+                           value="{{ search }}"
+                           autocomplete="off">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button type="button" id="btnLimpiarBusqueda" class="btn btn-secondary" style="display:{% if search %}inline-block{% else %}none{% endif %};">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="card-body">
-        {% if search %}
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <i class="fas fa-info-circle"></i> Mostrando resultados para: <strong>"{{ search }}"</strong>
-            <button type="button" class="close" data-dismiss="alert">
-                <span>&times;</span>
-            </button>
-        </div>
-        {% endif %}
-        
         <div class="table-responsive">
-            <table cellspacing="0" class="table table-bordered table-hover" id="dtBasicExample">
+            <table cellspacing="0" class="table table-bordered table-hover" id="tablaEstudiantes">
                 <thead class="bg-gradient-primary">
                 <tr class="text-light text-center">
                     <th>#</th>
@@ -209,6 +193,17 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
 
+// Inicializar DataTable sin buscador ni paginación (el backend lo maneja)
+$('#tablaEstudiantes').DataTable({
+    "searching": false,
+    "ordering": false,
+    "paging": false,
+    "info": false,
+    "language": {
+        "zeroRecords": "Sin datos"
+    }
+});
+
 // Confirmación elegante para eliminar
 function confirmarEliminacion(url, nombre) {
     Swal.fire({
@@ -241,21 +236,71 @@ function exportarExcel() {
     window.location.href = url;
 }
 
-// Auto-submit del formulario de búsqueda con delay
+// Búsqueda AJAX en tiempo real con delay de 400ms
 let searchTimeout;
-$('input[name="search"]').on('keyup', function() {
+const ajaxUrl = "{% url 'Academico:buscar_estudiantes_ajax' %}";
+
+$('#buscadorEstudiante').on('input', function() {
     clearTimeout(searchTimeout);
-    const form = $(this).closest('form');
+    const query = $(this).val().trim();
+
+    // Mostrar/ocultar botón limpiar
+    $('#btnLimpiarBusqueda').toggle(query.length > 0);
+
     searchTimeout = setTimeout(function() {
-        // Opcional: auto-submit después de 500ms
-        // form.submit();
-    }, 500);
+        buscarEstudiantes(query);
+    }, 400);
 });
+
+$('#btnLimpiarBusqueda').on('click', function() {
+    $('#buscadorEstudiante').val('').trigger('input');
+});
+
+function buscarEstudiantes(query) {
+    const $tbody = $('#tablaEstudiantes tbody');
+    const $contador = $('#contadorResultados');
+
+    // Indicador de carga
+    $tbody.html('<tr><td colspan="5" class="text-center py-3"><i class="fas fa-spinner fa-spin"></i> Buscando...</td></tr>');
+
+    $.get(ajaxUrl, { search: query }, function(data) {
+        $tbody.empty();
+
+        if (data.estudiantes.length === 0) {
+            const msg = query ? `con "${query}"` : '';
+            $tbody.html(`<tr><td colspan="5" class="text-center text-muted py-4">
+                <i class="fas fa-search fa-2x mb-2 d-block"></i>No se encontraron estudiantes ${msg}
+            </td></tr>`);
+        } else {
+            data.estudiantes.forEach(function(est) {
+                const btnCredencial = est.tiene_usuario
+                    ? `<a class="btn btn-sm bg-gradient-secondary text-light" href="#" title="Sin credenciales" data-toggle="tooltip"><i class="fas fa-envelope"></i></a>`
+                    : `<a class="btn btn-sm bg-gradient-warning text-light" href="${est.url_credenciales}" title="Enviar credenciales" data-toggle="tooltip"><i class="fas fa-envelope"></i></a>`;
+
+                $tbody.append(`
+                    <tr class="text-dark">
+                        <td>${est.id_persona}</td>
+                        <td>${est.nombres}</td>
+                        <td>${est.apellidos}</td>
+                        <td>${est.identificacion}</td>
+                        <td class="text-center">
+                            ${btnCredencial}
+                            <a class="btn btn-sm bg-gradient-success text-light" href="${est.url_consultar}" title="Ver detalles" data-toggle="tooltip"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-sm bg-gradient-primary text-light" href="${est.url_editar}" title="Editar" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-sm bg-gradient-danger text-light" onclick="confirmarEliminacion('${est.url_eliminar}', '${est.nombres} ${est.apellidos}')" title="Eliminar" data-toggle="tooltip"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-sm bg-gradient-info text-light" href="${est.url_ficha}" target="_blank" title="Ficha de matrícula" data-toggle="tooltip"><i class="fas fa-file-pdf"></i></a>
+                        </td>
+                    </tr>`);
+            });
+        }
+
+        // Actualizar contador
+        $contador.text(data.total + ' estudiante' + (data.total !== 1 ? 's' : ''));
+
+        // Re-activar tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+}
 </script>
 {% endblock extrajs %}
-
-
-
-
-
 

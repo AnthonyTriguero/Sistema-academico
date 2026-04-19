@@ -1,128 +1,125 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Crear Registro Notas{% endblock title %}
 {% load crispy_forms_tags %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
-{% endblock footer %}
+
 {% block contenido_principal %}
 
-<form method="POST" action="#">
-    {% csrf_token %}
-      {% if error %}
-        <h2>{{ error }}</h2>
-     {% else %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
 
-                <header class="cuadro_titulo">
-                    <h4 class="titulo text-center">Registro Notas | Notas Primer Quimestre</h4>
-                </header>
-
-
-
-        <div class="card-body card-block">
-            <form action="{% url 'Academico:Crear_RegistroNotas' %}" enctype="multipart/form-data" class="form-horizontal" method="POST">
-
-               <div class="row darkwhite-bg py-2">
-          <div class="col-12">
-
-
-            <div class="row">
-
-                <div class="col-3">
-                 {{ form.id_materia_profesor  | as_crispy_field}}
-
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 bg-gradient-primary">
+                    <h4 class="m-0 font-weight-bold text-white text-center">
+                        <i class="fas fa-clipboard-list"></i> Registro Notas | Notas Primer Quimestre
+                    </h4>
                 </div>
 
-                <div class="col-3">
-                 {{ form.id_matriculacion_estudiante  | as_crispy_field}}
+                <div class="card-body">
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-triangle"></i> {{ error }}
+                        </div>
+                    {% else %}
 
+                    <form method="POST" action="{% url 'Academico:Crear_RegistroNotas' %}">
+                        {% csrf_token %}
+
+                        <!-- Fila 1: Profesor y Estudiante -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="font-weight-bold">Profesor <span class="text-danger">*</span></label>
+                                {{ form.id_materia_profesor | as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="font-weight-bold">Estudiante <span class="text-danger">*</span></label>
+                                {{ form.id_matriculacion_estudiante | as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Fila 2: Notas parciales -->
+                        <h6 class="text-primary font-weight-bold mb-3">
+                            <i class="fas fa-pencil-alt"></i> Notas Parciales
+                        </h6>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div oninput="calcularResultado()">
+                                    {{ form.primer_parcial | as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div oninput="calcularResultado()">
+                                    {{ form.segundo_parcial | as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div oninput="calcularResultado()">
+                                    {{ form.tercer_parcial | as_crispy_field }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Promedios y Examen -->
+                        <h6 class="text-primary font-weight-bold mb-3">
+                            <i class="fas fa-calculator"></i> Promedios
+                        </h6>
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                {{ form.promedio_parciales | as_crispy_field }}
+                                <small class="text-muted">Calculado automáticamente</small>
+                            </div>
+                            <div class="col-md-4">
+                                <div oninput="calcularResultado()">
+                                    {{ form.examen | as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                {{ form.promedio_general_1 | as_crispy_field }}
+                                <small class="text-muted">Calculado automáticamente</small>
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+                        <hr>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-4">
+                                <i class="fas fa-save"></i> Registrar
+                            </button>
+                            <button type="reset" class="btn btn-secondary btn-lg px-4">
+                                <i class="fas fa-undo"></i> Restablecer
+                            </button>
+                            <a class="btn btn-danger btn-lg px-4" href="{% url 'Academico:registro_notas' %}">
+                                <i class="fas fa-times"></i> Cancelar
+                            </a>
+                        </div>
+
+                    </form>
+                    {% endif %}
                 </div>
-
-                <div class="col-3" oninput="resultado()" >
-                    {{ form.primer_parcial  | as_crispy_field}}
-
-                </div>
-
-                <div class="col-3" oninput="resultado()">
-                    {{ form.segundo_parcial  | as_crispy_field}}
-
-                </div>
-                <div class="col-3" oninput="resultado()">
-                    {{ form.tercer_parcial  | as_crispy_field}}
-
-
-                </div>
-                    <div class="col-3" oninput="resultado()">
-
-                    {{ form.promedio_parciales  | as_crispy_field}}
-
-                  </div>
-
-                <div class="col-3" oninput="resultado()">
-                     {{ form.examen  | as_crispy_field}}
-
-
-                </div>
-
-                <div class="col-3" >
-                 {{ form.promedio_general_1  | as_crispy_field}}
-                </div>
-
             </div>
 
-            </div>
-
-          </div>
         </div>
-
-			<div class="text-center">
-                    <button type="submit"  class="btn btn-outline-primary" >Registrar</button>
-                    <button type="reset" class="btn btn-outline-info">Restablecer</button>
-                    <a class="btn btn-outline-danger" href="{% url 'Academico:registro_notas' %}">Cancelar</a>
-            </div>
-  			</form>
-        </div>
-
-
-</form>
-
-
-    {% endif %}
-{% endblock contenido_principal %}
-{% block extrajs %}
-<div class="modal fade" id="mostrar_modal" role="dialog">
-
+    </div>
 </div>
-    <script>
- function resultado(){
-     var n1 = document.getElementById('id_primer_parcial').value;
-     var n2 = document.getElementById('id_segundo_parcial').value;
-     var n3 = document.getElementById('id_tercer_parcial').value;
-     var pr = ((parseFloat(n1)+parseFloat(n2)+parseFloat(n3))/3);
 
-     var  condecimal1=pr.toFixed(2);
+{% endblock contenido_principal %}
 
-     var pre = (parseFloat (condecimal1))*0.8;
+{% block extrajs %}
+<script>
+function calcularResultado() {
+    var n1 = parseFloat(document.getElementById('id_primer_parcial').value) || 0;
+    var n2 = parseFloat(document.getElementById('id_segundo_parcial').value) || 0;
+    var n3 = parseFloat(document.getElementById('id_tercer_parcial').value) || 0;
 
-     x = document.getElementById("id_promedio_parciales");
-     x.value = condecimal1;
+    var promParciales = ((n1 + n2 + n3) / 3).toFixed(2);
+    document.getElementById('id_promedio_parciales').value = promParciales;
 
-     var valor = document.getElementById('id_examen').value;
-     var porcentaje20 = (parseFloat(valor))*0.2;
-
-     var resultado = (parseFloat(pre)+parseFloat(porcentaje20));
-     var  condecimales=resultado.toFixed(2);
-
-     x = document.getElementById("id_promedio_general_1");
-     x.value = condecimales;
-
- }
-
-
-
-    </script>
+    var examen = parseFloat(document.getElementById('id_examen').value) || 0;
+    var promGeneral = (parseFloat(promParciales) * 0.8 + examen * 0.2).toFixed(2);
+    document.getElementById('id_promedio_general_1').value = promGeneral;
+}
+</script>
 {% endblock extrajs %}
-

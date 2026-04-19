@@ -1,9 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Reportes{% endblock title %}
 {% load static %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+
 {% block contenido_principal %}
 {%block body%}
   <script>
@@ -14,14 +13,12 @@
        }
     </script>
 
-
 <div class="card shadow mb-45">
   <div class="card-header py-3">
     <h4 class="m-0 font-weight-bold text-primary text-center">Reporte | Usuarios</h6>
   </div>
 
   <div class="card-body ">
-
 
 <form  method="POST" id="myform">
     {% csrf_token %}

@@ -1,0 +1,223 @@
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Crear Usuario{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block contenido_principal %}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-gradient-primary">
+        <h4 class="m-0 font-weight-bold text-white text-center">
+            <i class="fas fa-user-plus"></i> Configuración | Registrar Usuario
+        </h4>
+    </div>
+    
+    <div class="card-body">
+        {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle"></i> {{ error }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        {% endif %}
+
+        <form method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            
+            <!-- Información Personal -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-primary mb-3">
+                        <i class="fas fa-user"></i> Información Personal
+                    </h5>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_usuario">Usuario <span class="text-danger">*</span></label>
+                        <input type="text" 
+                               id="id_usuario" 
+                               name="usuario" 
+                               class="form-control" 
+                               minlength="4" 
+                               maxlength="20"
+                               placeholder="Ingrese nombre de usuario"
+                               required>
+                        <small class="form-text text-muted">
+                            Mínimo 4 caracteres, máximo 20
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_email">Email <span class="text-danger">*</span></label>
+                        <input type="email" 
+                               id="id_email" 
+                               name="email" 
+                               class="form-control" 
+                               placeholder="usuario@ejemplo.com"
+                               required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-primary mb-3 mt-3">
+                        <i class="fas fa-lock"></i> Seguridad
+                    </h5>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_password">Contraseña <span class="text-danger">*</span></label>
+                        <input type="password" 
+                               id="id_password" 
+                               name="password" 
+                               class="form-control" 
+                               data-validate="password"
+                               placeholder="••••••••"
+                               required>
+                        <small class="form-text text-muted">
+                            Mínimo 8 caracteres, incluir mayúsculas, minúsculas y números
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_password_confirm">Confirmar Contraseña <span class="text-danger">*</span></label>
+                        <input type="password" 
+                               id="id_password_confirm" 
+                               name="password_confirm" 
+                               class="form-control" 
+                               data-validate="password-match" 
+                               data-match="#id_password"
+                               placeholder="••••••••"
+                               required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información Adicional -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-primary mb-3 mt-3">
+                        <i class="fas fa-info-circle"></i> Información Adicional
+                    </h5>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_id_persona">Persona <span class="text-danger">*</span></label>
+                        {{ form.id_persona }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_id_genr_tipo_usuario">Tipo de Usuario <span class="text-danger">*</span></label>
+                        {{ form.id_genr_tipo_usuario }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="id_id_rol">Roles <span class="text-danger">*</span></label>
+                        {{ form.id_rol }}
+                        <small class="form-text text-muted">
+                            Puede seleccionar múltiples roles
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <hr>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save"></i> Registrar Usuario
+                        </button>
+                        <button type="reset" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-undo"></i> Restablecer
+                        </button>
+                        <a class="btn btn-danger btn-lg" href="{% url 'Academico:usuarios' %}">
+                            <i class="fas fa-times"></i> Cancelar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock contenido_principal %}
+
+{% block extrajs %}
+<script>
+$(document).ready(function() {
+    // Inicializar Select2 para roles
+    $("#id_id_rol").select2({
+        width: "100%",
+        placeholder: "Seleccione uno o más roles",
+        allowClear: true
+    });
+
+    // Inicializar Select2 para persona
+    $("#id_id_persona").select2({
+        width: "100%",
+        placeholder: "Seleccione una persona",
+        allowClear: true
+    });
+
+    // Inicializar Select2 para tipo de usuario
+    $("#id_id_genr_tipo_usuario").select2({
+        width: "100%",
+        placeholder: "Seleccione tipo de usuario",
+        allowClear: true
+    });
+
+    // Agregar atributo required a los selects
+    $("#id_id_persona, #id_id_genr_tipo_usuario, #id_id_rol").attr('required', true);
+
+    // Mostrar/ocultar contraseña
+    $('<button type="button" class="btn btn-outline-secondary" style="position: absolute; right: 25px; top: 38px; z-index: 10;"><i class="fas fa-eye"></i></button>')
+        .insertAfter('#id_password')
+        .on('click', function() {
+            const input = $('#id_password');
+            const icon = $(this).find('i');
+            if (input.attr('type') === 'password') {
+                input.attr('type', 'text');
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                input.attr('type', 'password');
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+
+    // Feedback visual al enviar
+    $('form').on('submit', function() {
+        const btn = $(this).find('button[type="submit"]');
+        btn.prop('disabled', true);
+        btn.html('<i class="fas fa-spinner fa-spin"></i> Guardando...');
+    });
+});
+</script>
+{% endblock extrajs %}

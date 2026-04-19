@@ -1,18 +1,16 @@
-{% extends 'base/base.html' %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Form Reg Estudiante{% endblock title %}
+
 {% block encabezado %}
 
     <title>Registro Estudiante</title>
 
 {% endblock encabezado %}
-{% block footer %}
-{% endblock footer %}
+
 {% block contenido_principal%}
 {% load crispy_forms_tags %}
-<form method="POST" action="#">
+<form method="POST" action="#" id="formRegistroEstudiante" class="needs-validation" novalidate>
 {% csrf_token %}
             <br>
             <div class="container">
@@ -39,16 +37,24 @@
 
                 <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-info1-tab" data-toggle="pill" href="#pills-info1" role="tab" aria-controls="pills-info1" aria-selected="true">Informacion Personal</a>
+                        <a class="nav-link active" id="pills-info1-tab" data-toggle="pill" href="#pills-info1" role="tab" aria-controls="pills-info1" aria-selected="true">
+                            Informacion Personal <span class="badge badge-danger tab-error-badge" id="badge-tab1" style="display:none;">!</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-info2-tab" data-toggle="pill" href="#pills-info2" role="tab" aria-controls="pills-info2" aria-selected="false">Salud</a>
+                        <a class="nav-link" id="pills-info2-tab" data-toggle="pill" href="#pills-info2" role="tab" aria-controls="pills-info2" aria-selected="false">
+                            Salud <span class="badge badge-danger tab-error-badge" id="badge-tab2" style="display:none;">!</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-info3-tab" data-toggle="pill" href="#pills-info3" role="tab" aria-controls="pills-info3" aria-selected="false">Informacion Familiares</a>
+                        <a class="nav-link" id="pills-info3-tab" data-toggle="pill" href="#pills-info3" role="tab" aria-controls="pills-info3" aria-selected="false">
+                            Informacion Familiares <span class="badge badge-danger tab-error-badge" id="badge-tab3" style="display:none;">!</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-info4-tab" data-toggle="pill" href="#pills-info4" role="tab" aria-controls="pills-info4" aria-selected="false">Informacion Representante</a>
+                        <a class="nav-link" id="pills-info4-tab" data-toggle="pill" href="#pills-info4" role="tab" aria-controls="pills-info4" aria-selected="false">
+                            Informacion Representante <span class="badge badge-danger tab-error-badge" id="badge-tab4" style="display:none;">!</span>
+                        </a>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -81,7 +87,6 @@
                                 {{form.id_genr_categoria_migratoria|as_crispy_field}}
                                 {{form.referenciadeubicacion|as_crispy_field}}
                                 {{form.plantel_procedenciaEst|as_crispy_field}}
-
 
                              </div>
                              <div class="col-4" style="font-weight: bold;color: #0f0f0f;text-transform: uppercase">
@@ -157,8 +162,6 @@
                                 {{form.pdireccion|as_crispy_field}}
                                 {{form.pvive_con_usted|as_crispy_field}}
                             </div>
-
-
 
                                 <h1 style="color: #2e59d9; font-weight: bold;">Datos De La Madre</h1>
                             <div>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
@@ -255,6 +258,55 @@
 {% endblock contenido_principal%}
 
 
+{% block extrajs %}
+<script>
+$(document).ready(function() {
+    var validator = new FormValidator('#formRegistroEstudiante', {
+        validateOnBlur: true,
+        validateOnInput: true,
+        showSuccessIcon: false,
+        scrollToError: false,
+        onError: function() {
+            updateTabBadges();
+            // Navigate to first tab with errors
+            var tabPanes = ['#pills-info1', '#pills-info2', '#pills-info3', '#pills-info4'];
+            var tabLinks = ['#pills-info1-tab', '#pills-info2-tab', '#pills-info3-tab', '#pills-info4-tab'];
+            for (var i = 0; i < tabPanes.length; i++) {
+                if ($(tabPanes[i]).find('.is-invalid').length > 0) {
+                    $(tabLinks[i]).tab('show');
+                    var $firstError = $(tabPanes[i]).find('.is-invalid').first();
+                    $('html, body').animate({ scrollTop: $firstError.offset().top - 120 }, 300);
+                    $firstError.focus();
+                    break;
+                }
+            }
+        }
+    });
 
+    function updateTabBadges() {
+        var tabs = [
+            { pane: '#pills-info1', badge: '#badge-tab1' },
+            { pane: '#pills-info2', badge: '#badge-tab2' },
+            { pane: '#pills-info3', badge: '#badge-tab3' },
+            { pane: '#pills-info4', badge: '#badge-tab4' }
+        ];
+        tabs.forEach(function(t) {
+            var hasErrors = $(t.pane).find('.is-invalid').length > 0;
+            $(t.badge).toggle(hasErrors);
+        });
+    }
 
+    // Update badges on field validation
+    $('#formRegistroEstudiante').on('blur', 'input, select, textarea', function() {
+        setTimeout(updateTabBadges, 50);
+    }).on('change', 'select', function() {
+        setTimeout(updateTabBadges, 50);
+    });
 
+    // Clear badge when switching to a tab that has no more errors
+    $('[data-toggle="pill"]').on('shown.bs.tab', function() {
+        updateTabBadges();
+    });
+});
+</script>
+{% endblock extrajs %}

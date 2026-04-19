@@ -1,15 +1,12 @@
-{% extends 'base/base.html' %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Listar Asig Curso{% endblock title %}
 
 {% block contenido_principal %}
 <header class="cuadro_titulo text-center bg-gradient-primary">
     <h4 class="title text-light"> Matriculación </h4>
 </header>
 <br/>
-
 
 <a class="text-light btn bg-gradient-primary" href="{% url 'Academico:crear_asigancion_curso' %}" id="registrar">
     Agregar
@@ -62,7 +59,6 @@
     </div>
 </div>
 
-
 {% endblock contenido_principal %}
 
 {% block extrajs %}
@@ -81,6 +77,5 @@
         });
     }
 </script>
-
 
 {% endblock extrajs %}

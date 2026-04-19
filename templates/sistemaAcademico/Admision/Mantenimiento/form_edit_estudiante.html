@@ -1,8 +1,9 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Form Edit Estudiante{% endblock title %}
 {% block encabezado %}
 {% load static %}
 {% if val %}
-
 
 <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
     <!-- Sidebar Toggle (Topbar) -->
@@ -88,8 +89,7 @@
 <title>Editar Estudiante</title>
 {% endif %}
 {% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+
 {% load crispy_forms_tags %}
 {% block contenido_principal %}
 <form method="POST" action="{% url 'Academico:editar_estudiante' m.id_persona  %}">
@@ -160,7 +160,6 @@
                             <div class="col-4" style="display: flex;justify-content: center;font-weight: bold;color: #0f0f0f"> {{form.cod_alfnum|as_crispy_field}}</div>
                             {% endif %}
 
-
                             <div>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
 
                             <div class="col-4" style="font-weight: bold;color: #0f0f0f;text-transform: uppercase">
@@ -185,7 +184,6 @@
                                 {{form.id_genr_categoria_migratoria|as_crispy_field}}
                                 {{form.referenciadeubicacion|as_crispy_field}}
                                 {{form.plantel_procedenciaEst|as_crispy_field}}
-
 
                              </div>
                              <div class="col-4" style="font-weight: bold;color: #0f0f0f;text-transform: uppercase">
@@ -260,8 +258,6 @@
                                 {{form.pdireccion|as_crispy_field}}
                                 {{form.pvive_con_usted|as_crispy_field}}
                             </div>
-
-
 
                                 <h1 style="color: #2e59d9; font-weight: bold;">Datos De La Madre</h1>
                             <div>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>

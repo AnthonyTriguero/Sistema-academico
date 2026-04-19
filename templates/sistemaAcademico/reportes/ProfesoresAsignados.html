@@ -1,12 +1,7 @@
-{% extends 'base/base.html' %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
-{% endblock footer %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Profesoresasignados{% endblock title %}
+
 {% block contenido_principal %}
 <header class="cuadro_titulo rounded bg-gradient-primary text-center"><h4 class="title text-light"> Asignacion |
     Profesores </h4></header>
@@ -45,8 +40,6 @@
 
                     {% for a in info  %}
 
-
-
                     {% if not a.id_materia_profesor %}
 
                      <td>
@@ -74,14 +67,9 @@
 
                     {% endfor %}
 
-
-
-
-
                 </tr>
 
                 {% endfor %}
-
 
                 </tbody>
 
@@ -92,9 +80,6 @@
     </div>
 
 </div>
-
-
-
 
 {% endblock contenido_principal %}
 {% block extrajs %}

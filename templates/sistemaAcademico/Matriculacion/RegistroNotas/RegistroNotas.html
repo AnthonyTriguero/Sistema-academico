@@ -1,14 +1,7 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
 
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
+{% block title %}SA - Registronotas{% endblock title %}
 
-{% endblock footer %}
 {% block contenido_principal %}
 
 <header class="cuadro_titulo rounded bg-gradient-primary text-center"><h4 class="title text-light"> Movimiento |
@@ -20,7 +13,6 @@
    id="registrar">Agregar Notas del 1 Quimestre </a>
     <a class="btn bg-gradient-primary text-light" href="{% url 'Academico:listar_materia2' %}"
    id="registrar">Agregar Notas del 2 Quimestre</a>
-
 
 <br/>
 
@@ -89,6 +81,5 @@
 <div class="modal fade" id="mostrar_modal" role="dialog">
 
 </div>
-
 
 {% endblock extrajs %}

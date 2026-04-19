@@ -1,14 +1,9 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
 
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}z
-{% block footer %}
+{% block title %}SA - Listar Materia{% endblock title %}
 
-{% endblock footer %}
+z
+
 {% block contenido_principal %}
 
 <header class="cuadro_titulo rounded bg-gradient-primary text-center"><h4 class="title text-light"> Movimiento |
@@ -25,9 +20,6 @@
             <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Registro Notas | Notas Segundo Quimestre </h6>
         </div>
-
-
-
 
           <div class="card-body">
                 <div class="table-responsive">
@@ -67,12 +59,9 @@
                                  <td style="color: green">{{notas.promedio_general_2}}</td>
                                 {% endif %}
 
-
                                     <td align="center">
                                     <a class="btn bg-gradient-primary text-light"
                                        onclick="modal('{% url 'Academico:actualizar_registro_notas2' notas.id_detalle_registro_notas %}')" title="Editar"><i class="fas fa-info-circle"></i></a>
-
-
 
                                     </td>
                             </tr>
@@ -82,10 +71,6 @@
                 </div>
         </div>
     </div>
-
-
-
-
 
 {% endblock contenido_principal %}
 {% block extrajs %}

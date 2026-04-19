@@ -84,3 +84,18 @@ def acciones(request):
     except Exception as e:
         logger.error(f"Error en context_processor acciones: {e}")
         return vacio
+
+
+def usuario_info(request):
+    """Context processor para información del usuario actual."""
+    from sistemaAcademico.Apps.GestionAcademica.Diccionario.Estructuras_tablas_conf import ConfUsuario
+    
+    try:
+        usuario_id = request.session.get('usuario')
+        if usuario_id:
+            usuario = ConfUsuario.objects.get(id_usuario=usuario_id)
+            return {'info_usuario': usuario}
+    except Exception as e:
+        logger.error(f"Error en context_processor usuario_info: {e}")
+    
+    return {'info_usuario': None}

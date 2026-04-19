@@ -111,3 +111,67 @@ Traceback (most recent call last):
   File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\xhtml2pdf\w3c\cssParser.py", line 1080, in _parseSelectorPseudo
     raise self.ParseError(msg, src, ctxsrc)
 xhtml2pdf.w3c.cssParser.CSSParseError: Selector Pseudo Function closing ')' not found:: (':not(', ':focus-visible){outl')
+ERROR 2026-04-19 14:48:16,374 log Internal Server Error: /estudiantes_filtro/
+Traceback (most recent call last):
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\sistemaAcademico\Apps\GestionAcademica\Controladores\Matriculacion\View_estudiante.py", line 58, in filtro_estudiantes
+    return render(request, 'sistemaAcademico/Matriculacion/Estudiantes_filtros/Filtrar.html', cox)
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\OneDrive\Desktop\Nueva carpeta\AmbienteDesarrolloPython\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'tipo_estudiantes' with arguments '('',)' not found. 1 pattern(s) tried: ['tipo_estudiantes/(?P<pk>[0-9]+)\\Z']
+WARNING 2026-04-19 15:06:24,961 views Intento de login fallido para usuario: anthony
+WARNING 2026-04-19 16:15:07,798 middleware Acceso no autorizado a /.well-known/appspecific/com.chrome.devtools.json

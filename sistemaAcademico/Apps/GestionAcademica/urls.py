@@ -37,7 +37,7 @@ from .Controladores.Configuraciones.Estructura_view_roles import (
 from .Controladores.Mantenimiento.Estructura_view_mantenimientos import (
     Empleado, Estudiante, Estudiantes, NuevoEstudiante, NuevoEmpleado,
     UpdateEmpleado, UpdateEstudiante, ConsultarEstudiante, ConsultarEmpleado,
-    eliminar_estudiante, eliminar_empleado,
+    eliminar_estudiante, eliminar_empleado, buscar_estudiantes_ajax,
 )
 from .Controladores.Mantenimiento.Estructura_view_reportes import (
     reporte_estudiante, reporte_empleado, Reportepor_estudiante,
@@ -141,6 +141,7 @@ urlpatterns = [
     # --- Admisión / Mantenimiento ---
     path('empleado/', Empleado.as_view(), name='empleado'),
     path('estudiante/', Estudiante.as_view(), name='estudiante'),
+    path('estudiante/buscar/', buscar_estudiantes_ajax, name='buscar_estudiantes_ajax'),
     path('movimientos/', movimientos, name='movimientos'),
     path('consultas/', consultas, name='consultas'),
     path('procesos/', procesos, name='procesos'),

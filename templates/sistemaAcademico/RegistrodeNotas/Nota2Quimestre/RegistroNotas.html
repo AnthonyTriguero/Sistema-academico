@@ -1,19 +1,11 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
 
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
+{% block title %}SA - Registronotas{% endblock title %}
 
-{% endblock footer %}
 {% block contenido_principal %}
 
 <header class="cuadro_titulo rounded bg-gradient-primary text-center"><h4 class="title text-light"> Movimiento |
     Registro Notas Primer Quimestre </h4></header>
-
 
 <br/>
 <a class="btn bg-gradient-primary text-light" href="{% url 'Academico:registro_notas' %}"
@@ -77,13 +69,9 @@
      var n3 = document.getElementById('id_tercer_parcial').value;
      var pr = (parseFloat(n1)+parseFloat(n2)+parseFloat(n3))/3;
 
-
-
-
      x = document.getElementById("id_promedio_parciales");
 
     x.value = pr;
-
 
  }
  function resultado(){
@@ -91,7 +79,6 @@
      var n2 = document.getElementById('id_examen_gracia').value;
      var n3 = document.getElementById('id_examen_supletorio').value;
      var pr = (parseFloat(n1)+parseFloat(n2)+parseFloat(n3))/3;
-
 
      x = document.getElementById("id_total_promedio_general");
 

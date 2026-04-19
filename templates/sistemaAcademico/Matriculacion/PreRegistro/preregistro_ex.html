@@ -1,11 +1,7 @@
-{% extends 'base/base.html' %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block footer %}
+{% extends 'base/base_layout.html' %}
 
-{% endblock footer %}
+{% block title %}SA - Preregistro Ex{% endblock title %}
+
 {% block contenido_principal %}
 
 <form action="" method="post" enctype="multipart/form-data">
@@ -48,14 +44,11 @@
 <div id="status"><div>
 </form>
 
-
-
 {% endblock contenido_principal %}
 
 {% block extrajs %}
 
 <script>
-
 
     function mostrar(){
         document.getElementById('status').innerHTML="<div class='d-flex justify-content-center'>"+
@@ -68,8 +61,6 @@
 });
     
     }
-   
-    
-    
+
     </script>
   {% endblock extrajs %}

@@ -233,18 +233,104 @@ svg {
 }
 
 /* ---------------LOGO INICIO--------------- */
-.fond-logo{
+.fond-logo {
     height: 70px;
-    width: 220px;
-
+    overflow: hidden;
 }
 
-.pad-logo{
-    padding-left: 20px;
+.pad-logo {
+    padding-left: 15px;
     padding-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
-.pad-texto-logo{
+.pad-texto-logo {
     padding-left: 5px;
-    padding-top: 10px;
+}
+
+/* ---------------SIDEBAR RESPONSIVE--------------- */
+@media (max-width: 767.98px) {
+    /* Sidebar oculto por defecto en móvil */
+    #wrapper .sidebar {
+        width: 0 !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Al tocar hamburguesa se muestra - solo íconos */
+    #wrapper .sidebar.toggled {
+        width: 5rem !important;
+        overflow: visible !important;
+        position: relative;
+        z-index: 100;
+    }
+
+    /* Reset padding del ul.navbar-nav en móvil */
+    ul#accordionSidebar.toggled {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Íconos centrados con buen contraste */
+    #wrapper .sidebar.toggled .nav-item {
+        width: 5rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    #wrapper .sidebar.toggled .nav-item .nav-link {
+        display: block !important;
+        text-align: center !important;
+        padding: 1rem 0 !important;
+        width: 5rem !important;
+        margin: 0 !important;
+    }
+
+    #wrapper .sidebar.toggled .nav-item .nav-link i {
+        display: block !important;
+        margin: 0 auto !important;
+        font-size: 1.3rem !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-align: center;
+    }
+
+    #wrapper .sidebar.toggled .nav-item .nav-link:hover i {
+        color: #ffffff !important;
+    }
+
+    /* Sin texto */
+    #wrapper .sidebar.toggled .nav-item .nav-link span {
+        display: none !important;
+    }
+
+    /* Sin flecha accordion */
+    #wrapper .sidebar.toggled .nav-link[data-toggle="collapse"]::after {
+        display: none !important;
+    }
+
+    /* Sin heading MÓDULOS */
+    #wrapper .sidebar.toggled .sidebar-heading {
+        display: none !important;
+    }
+
+    /* Separador visible */
+    #wrapper .sidebar.toggled hr.sidebar-divider {
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        margin: 0.25rem 0.5rem;
+    }
+
+    /* Logo: solo ícono centrado */
+    .pad-texto-logo {
+        display: none !important;
+    }
+
+    .pad-logo {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    #sidebarToggleTop {
+        display: inline-flex !important;
+    }
 }

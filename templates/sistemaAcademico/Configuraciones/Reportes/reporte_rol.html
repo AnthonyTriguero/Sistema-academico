@@ -1,9 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Reporte Rol{% endblock title %}
 {% load static %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+
 {% block contenido_principal %}
 {%block body%}
   <script>
@@ -12,7 +11,6 @@
         var formulario = document.getElementById('myform').submit();
            console.log(hidden);
        }
-
 
     </script>
 
@@ -33,11 +31,7 @@
         <button type="button" id="ex" onclick="Reportes(1)"><img src="{%static 'img/excel1.png'%}" alt="REPORTE EN EXCEL" height="30" width="30"></button> &nbsp;
         <button type="button" id="pd" onclick="Reportes(2)"><img src="{%static 'img/pdf1.ico'%}" alt="REPORTE EN PDF" height="30" width="30"></button>
 
-
         <input type="hidden" name="comboR" id="comboR" value="">
-
-
-
 
     </div>
 

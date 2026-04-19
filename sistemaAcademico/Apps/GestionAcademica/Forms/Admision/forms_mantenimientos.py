@@ -648,40 +648,49 @@ class EstudianteForm(ModelForm):
 
             "nombres": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombres del Estudiante"}),
             "apellidos": forms.TextInput(attrs={"class": "form-control", "placeholder": "Apellidos del Estudiante"}),
-            "identificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '20',
+            "identificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                                     "data-validate": "cedula",
                                                      "placeholder": "Numero de Cedula"}),
             "fecha_de_nacimiento": forms.DateTimeInput(attrs={"class": "form-control", "type": "date"}),
             "lugar_nacimiento": forms.TextInput(attrs={"class": "form-control", "placeholder": "Lugar de Nacimiento"}),
             "direccion": forms.TextInput(attrs={"class": "form-control", "placeholder": "Direccion"}),
-            "telefono": forms.TextInput(attrs={"class": "form-control", "placeholder": "Telefono"}),
-            "celular": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', "placeholder": "Celular"}),
+            "telefono": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                               "data-validate": "phone", "placeholder": "Telefono"}),
+            "celular": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                              "data-validate": "phone", "placeholder": "Celular"}),
 
             "pnombres": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombres del Padre"}),
             "papellidos": forms.TextInput(attrs={"class": "form-control", "placeholder": "Apellidos del Padre"}),
-            "pidentificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '20',
+            "pidentificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                                      "data-validate": "cedula",
                                                       "placeholder": "Cedula del padre"}),
             "pdireccion": forms.TextInput(attrs={"class": "form-control", "placeholder": "Direccion del Padre"}),
-            "ptelefono": forms.TextInput(attrs={"class": "form-control", "placeholder": "Telefono del Padre"}),
+            "ptelefono": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                                "data-validate": "phone", "placeholder": "Telefono del Padre"}),
             "mnombres": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombres de la Madre"}),
             "mapellidos": forms.TextInput(attrs={"class": "form-control", "placeholder": "Apellidos de la Madre"}),
-            "midentificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '20',
+            "midentificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                                      "data-validate": "cedula",
                                                       "placeholder": "Cedula de la Madre"}),
-            "mdireccion": forms.TextInput(attrs={"class": "form-control", "placeholder": "Direccion del Padre"}),
+            "mdireccion": forms.TextInput(attrs={"class": "form-control", "placeholder": "Direccion de la Madre"}),
             "mtelefono": forms.TextInput(
-                attrs={"class": "form-control", 'minlength': '10', "placeholder": "Telefono de la Madre"}),
+                attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                       "data-validate": "phone", "placeholder": "Telefono de la Madre"}),
 
             "rnombres": forms.TextInput(attrs={"class": "form-control", "placeholder": "Nombre del Representante"}),
             "rapellidos": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Apellidos del Representante"}),
             "rtelefono": forms.TextInput(
-                attrs={"class": "form-control", 'minlength': '10', "placeholder": "Telefono del Representante"}),
-            "ridentificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '20',
+                attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                       "data-validate": "phone", "placeholder": "Telefono del Representante"}),
+            "ridentificacion": forms.TextInput(attrs={"class": "form-control", 'minlength': '10', 'maxlength': '10',
+                                                      "data-validate": "cedula",
                                                       "placeholder": "Cedula del Representante"}),
             "tipo_parentesco": forms.TextInput(attrs={"class": "form-control", "placeholder": "Parentesco"}),
             "rdireccion_trabajo": forms.TextInput(attrs={"class": "form-control", "placeholder": "Direccion"}),
             "rtelefono_trabajo": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Telefono Trabajo"}),
-            "rcorreo": forms.TextInput(attrs={"class": "form-control", "placeholder": "email"}),
+            "rcorreo": forms.TextInput(attrs={"class": "form-control", "data-validate": "email", "placeholder": "email"}),
             "rhorario_laboral": forms.TextInput(attrs={"class": "form-control", "placeholder": "Horario"}),
             "mienbros_hogar": forms.TextInput(attrs={"class": "form-control", "placeholder": "Miembros del Hogar"}),
 
@@ -689,7 +698,7 @@ class EstudianteForm(ModelForm):
             "edadEst": forms.TextInput(attrs={"class": "form-control", "placeholder": "Edad de Estudiante"}),
             "sector": forms.Select(attrs={"class": "form-control", "placeholder": "Sector"}),
             "referenciadeubicacion": forms.TextInput(attrs={"class": "form-control", "placeholder": "Referencia de Ubicacion"}),
-            "correo_elest": forms.TextInput(attrs={"class": "form-control", "placeholder": "Correco Electronico"}),
+            "correo_elest": forms.TextInput(attrs={"class": "form-control", "data-validate": "email", "placeholder": "Correo Electronico"}),
             "nacionalidadEst": forms.Select(attrs={"class": "form-control", "placeholder": "Nacionalidad"}),
             "plantel_procedenciaEst": forms.TextInput(attrs={"class": "form-control", "placeholder": "Plantel de Procedencia"}),
 
@@ -709,7 +718,7 @@ class EstudianteForm(ModelForm):
             "generoMam": forms.Select(attrs={"class": "form-control", "placeholder": "Genero"}),
             "paisMam": forms.Select(attrs={"class": "form-control", "placeholder": "Pais"}),
             "ciudadMam": forms.Select(attrs={"class": "form-control", "placeholder": "Ciudad"}),
-            "correo_elMam": forms.TextInput(attrs={"class": "form-control", "placeholder": "Correo Electronico"}),
+            "correo_elMam": forms.TextInput(attrs={"class": "form-control", "data-validate": "email", "placeholder": "Correo Electronico"}),
 
                   # Nuevos Campos Papa
             "fecha_nacimientoPap": forms.DateTimeInput(attrs={"class": "form-control", "type": "date"}),
@@ -717,7 +726,7 @@ class EstudianteForm(ModelForm):
             "generoPap": forms.Select(attrs={"class": "form-control", "placeholder": "Genero"}),
             "paisPap": forms.Select(attrs={"class": "form-control", "placeholder": "Pais"}),
             "ciudadPap": forms.Select(attrs={"class": "form-control", "placeholder": "Ciudad"}),
-            "correo_elPap": forms.TextInput(attrs={"class": "form-control", "placeholder": "Correo Electronico"}),
+            "correo_elPap": forms.TextInput(attrs={"class": "form-control", "data-validate": "email", "placeholder": "Correo Electronico"}),
         }
 
     def __init__(self, *args, **kwargs):

@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}SA - Sistema Académico{% endblock title %}</title>
+  
+  <!-- Custom fonts -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+  
+  <!-- Custom styles -->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
+  <link href="{% static 'css/formularios.css' %}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
+  
+  <!-- Icono de la pestaña -->
+  <link rel="icon" href="{% static 'img/icono.ico' %}">
+  
+  {% block extracss %}{% endblock extracss %}
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <!-- Sidebar - Brand -->
+      <div class="fond-logo">
+        <div class="pad-logo">
+          <a class="" href="{% url 'Academico:pantalla_principal' %}">
+            <img src="{% static 'img/logo-menu.png' %}" height="50" width="50">
+          </a>
+          <a class="pad-texto-logo" href="{% url 'Academico:pantalla_principal' %}">
+            <img src="{% static 'img/texto-menu.png' %}" height="50" width="140">
+          </a>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <!-- Heading -->
+      <div class="sidebar-heading text-light">
+        {% block titulo_menu %}Módulos{% endblock titulo_menu %}
+      </div>
+      
+      <!-- Nav Items - Menu dinámico -->
+      {% for menu_p in permisos %}
+        {% ifchanged menu_p %}
+          {% if menu_p.id_padre == 0 %}
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_{{menu_p.id_menu}}"
+                aria-expanded="true" aria-controls="menu_{{menu_p.id_menu}}">
+                <i class="{{menu_p.icono}}"></i>
+                <span>{{menu_p.descripcion}}</span>
+              </a>
+              
+              <div id="menu_{{menu_p.id_menu}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="collapse-inner rounded bg-gradient-primary">
+                  <h6 class="collapse-header text-light">{{menu_p.descripcion}}</h6>
+                  
+                  {% for menu_h in permisos %}
+                    {% for submenu in permisos %}
+                      {% if menu_p.id_menu == menu_h.id_padre and submenu.id_padre == menu_h.id_menu and menu_h.url == "#" %}
+                        {% ifchanged menu_h %}
+                          <a class="collapse-item text-light" data-toggle="collapse" href="#submenu_{{submenu.id_padre}}" 
+                             role="button" aria-expanded="false" aria-controls="submenu_{{submenu.id_menu}}" 
+                             id="menu_{{menu_h.id_menu}}">
+                            <i class="{{menu_h.icono}}"></i>
+                            {{menu_h.descripcion}}
+                          </a>
+                        {% endifchanged %}
+                        
+                        <div id="submenu_{{submenu.id_padre}}" class="collapse">
+                          <a class="collapse-item text-light" href="{% url submenu.url %}" id="item">
+                            <i class="{{submenu.icono}}"></i>
+                            {{submenu.descripcion}}
+                          </a>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                    
+                    {% ifchanged menu_h %}
+                      {% if menu_p.id_menu == menu_h.id_padre and menu_h.url != "#" %}
+                        <a class="collapse-item text-light" href="{% url menu_h.url %}" id="menu_{{menu_h.id_menu}}">
+                          <i class="{{menu_h.icono}}"></i>
+                          {{menu_h.descripcion}}
+                        </a>
+                      {% endif %}
+                    {% endifchanged %}
+                  {% endfor %}
+                </div>
+              </div>
+            </li>
+          {% endif %}
+        {% endifchanged %}
+      {% endfor %}
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
+      <!-- Sidebar Toggler -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-primary topbar mb-4 static-top shadow">
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-primary d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" 
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline small initialism">{{info_usuario.usuario}}</span>
+                <img class="img-profile rounded-circle" src="{% static 'media/user.jpg' %}">
+              </a>
+              
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Perfil
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Configurar mi cuenta
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Cerrar Sesión
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          {% block contenido_principal %}
+          <!-- El contenido de cada página va aquí -->
+          {% endblock contenido_principal %}
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; ISTG</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="{% url 'Academico:logout' %}">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+  <script src="{% static 'js/modales.js' %}"></script>
+  <script src="{% static 'js/blockUi.js' %}"></script>
+  
+  <!-- DataTables -->
+  <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+  
+  <!-- Select2 -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  
+  <!-- Validaciones -->
+  <script src="{% static 'js/validaciones_formularios/validaciones_modulo_configuracion.js' %}"></script>
+  <script src="{% static 'js/validaciones_formularios.js' %}"></script>
+
+  <!-- Sidebar responsive: oculto por defecto en móvil -->
+  <script>
+    $(document).ready(function() {
+      // En móvil el sidebar empieza oculto (sin clase toggled = width 0 por CSS)
+      // En desktop no tocamos nada, SB Admin 2 lo maneja normalmente
+    });
+  </script>
+  
+  <!-- DataTables Configuration -->
+  <script>
+    $(document).ready(function() {
+      $('#dtBasicExample').DataTable({
+        "searching": true,
+        "ordering": false,
+        "language": {
+          "lengthMenu": "Mostrar _MENU_ por página",
+          "zeroRecords": "Sin datos",
+          "info": "Mostrando página _PAGE_ de _PAGES_",
+          "infoEmpty": "",
+          "search": "Buscar:",
+          "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": "Siguiente",
+            "previous": "Anterior"
+          }
+        }
+      });
+      $('.dataTables_length').addClass('bs-select');
+    });
+  </script>
+  
+  {% block extrajs %}{% endblock extrajs %}
+</body>
+</html>

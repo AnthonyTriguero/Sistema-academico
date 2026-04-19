@@ -1,9 +1,9 @@
 import logging
 import socket
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
@@ -370,21 +370,59 @@ class DatosEstudiante(UpdateView):
     context_object_name = 's'
 
 
+def buscar_estudiantes_ajax(request):
+    """Vista AJAX para búsqueda de estudiantes sin recargar la página."""
+    if 'usuario' not in request.session:
+        return JsonResponse({'error': 'No autorizado'}, status=403)
+
+    search = request.GET.get('search', '').strip()
+    queryset = MantPersona.objects.filter(
+        estado=97, id_genr_tipo_usuario=19
+    ).select_related('id_genr_tipo_usuario')
+
+    if search:
+        queryset = queryset.filter(
+            Q(nombres__icontains=search) |
+            Q(apellidos__icontains=search) |
+            Q(identificacion__icontains=search)
+        )
+
+    queryset = queryset.order_by('apellidos').values(
+        'id_persona', 'nombres', 'apellidos', 'identificacion'
+    )
+
+    data = []
+    for est in queryset:
+        tiene_usuario = bool(UsuarioTemp.objects.filter(id_persona=est['id_persona']).first())
+        data.append({
+            'id_persona': est['id_persona'],
+            'nombres': est['nombres'],
+            'apellidos': est['apellidos'],
+            'identificacion': est['identificacion'],
+            'tiene_usuario': tiene_usuario,
+            'url_credenciales': reverse('Academico:usuario_temp', args=[est['id_persona']]),
+            'url_consultar': reverse('Academico:consultar_estudiante', args=[est['id_persona']]),
+            'url_editar': reverse('Academico:editar_estudiante', args=[est['id_persona']]),
+            'url_eliminar': reverse('Academico:eliminar_estudiante', args=[est['id_persona']]),
+            'url_ficha': reverse('Academico:ficha_reporte', args=[est['id_persona']]),
+        })
+
+    return JsonResponse({'estudiantes': data, 'total': len(data)})
+
+
 def eliminar_estudiante(request, id):
     # Protección: requiere autenticación
     if 'usuario' not in request.session:
         return redirect('Academico:timeout')
-    
+
     estudiantes = MantPersona.objects.get(id_persona=id)
     inactivo = GenrGeneral.objects.get(idgenr_general=98)
-    
+
     if request.method == 'POST':
-        # Solo POST puede eliminar
         estudiantes.estado = inactivo
         estudiantes.save()
         logger.info(f"Estudiante {estudiantes.nombres} {estudiantes.apellidos} eliminado por {request.session.get('usuario')}")
         return redirect('Academico:estudiante')
-    
-    # GET muestra confirmación (cargado en modal)
+
     return render(request, 'sistemaAcademico/Admision/Mantenimiento/form_eliminar_estudiante.html',
                 {'estudiante': estudiantes})

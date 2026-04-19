@@ -1,15 +1,8 @@
-{% extends 'base/base.html' %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block footer %}
+{% extends 'base/base_layout.html' %}
 
-{% endblock footer %}
+{% block title %}SA - Empresa{% endblock title %}
 
 {% block contenido_principal %}
-
-
 
 <header class="cuadro_titulo bg-gradient-primary text-center ">
   <h4 class="title text-light"> Configuracion | Unidad Educativa </h4>
@@ -49,7 +42,6 @@
               <a href="{% url 'Academico:editar_empresa' em.id_empresa %}" class="btn bg-gradient-primary text-light"
                 title="Editar {{em.nombre}}"><i class="fas fa-info-circle"></i></a>
 
-
                <a type="button" class="btn bg-gradient-danger text-light" onclick="eliminar_unidad('{% url 'Academico:eliminar' em.id_empresa  %}')"
                            title="Eliminar {{em.nombre}}" data-toggle="modal" data-target="eliminar_unidades"><i
                                 class="fas fa-exclamation-triangle"></i></a>
@@ -63,8 +55,6 @@
     </div>
   </div>
 </div>
-
-
 
 {% endblock contenido_principal %}
 

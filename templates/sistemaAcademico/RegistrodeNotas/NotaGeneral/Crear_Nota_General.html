@@ -1,13 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Crear Nota General{% endblock title %}
 {% load crispy_forms_tags %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
-{% endblock footer %}
+
 {% block contenido_principal %}
 
 <form method="POST" action="#">
@@ -31,12 +26,9 @@
                 <div class="col-auto" >
                     {{ form.id_detalle_registro_notas2  | as_crispy_field}}
 
-
-
                 </div>
                 <div class="col-auto" >
                     {{ form.id_mov_anioelectivo_curso  | as_crispy_field}}
-
 
                 </div>
                     <div class="col-auto" >
@@ -46,7 +38,6 @@
 
                 <div class="col-auto"  >
                      {{ form.examen_supletorio  | as_crispy_field}}
-
 
                 </div>
                 <div class="col-auto" >
@@ -73,9 +64,7 @@
   			</form>
         </div>
 
-
 </form>
-
 
     {% endif %}
 {% endblock contenido_principal %}

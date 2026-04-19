@@ -13,16 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 def inicio(request):
-    contexto = {}
-    permiso = ConfMenu.objects.filter(
-        fk_permiso_modmenu__id_rol__fk_rol__id_usuario=request.session.get('usuario'),
-        id_genr_estado=97
-    ).values()
-    usuario = ConfUsuario.objects.get(
-        id_usuario=request.session.get('usuario'))
-    contexto['permisos'] = permiso
-    contexto['info_usuario'] = usuario
-    return render(request, 'base/base.html', contexto)
+    """Redirige a la pantalla principal del sistema"""
+    return redirect('Academico:pantalla_principal')
 
 
 def login(request):
@@ -79,10 +71,14 @@ def salir(request):
 
 
 def pantalla_principal(request):
+    """Vista principal del sistema con estadísticas"""
+    # Obtener estadísticas
     usuarios = ConfUsuario.objects.filter(id_genr_estado=97).count()
     personas = MantPersona.objects.count()
     alumnos = MantEstudiante.objects.count()
     empleados = MantEmpleado.objects.count()
+    
+    # Los permisos y usuario están disponibles globalmente via context_processors
     return render(request, 'sistemaAcademico/Pantalla_principal.html', {
         'usuarios': usuarios,
         'personas': personas,

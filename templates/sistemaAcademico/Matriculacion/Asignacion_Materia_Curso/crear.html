@@ -1,14 +1,8 @@
-{% extends 'base/base.html' %}
-{% load crispy_forms_tags %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
+{% extends 'base/base_layout.html' %}
 
-{% endblock footer %}
+{% block title %}SA - Crear{% endblock title %}
+{% load crispy_forms_tags %}
+
 {% block contenido_principal %}
 <form method="POST" action="#">
   {% csrf_token %}

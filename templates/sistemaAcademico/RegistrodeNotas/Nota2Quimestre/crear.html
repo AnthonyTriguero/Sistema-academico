@@ -1,13 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Crear{% endblock title %}
 {% load crispy_forms_tags %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
-{% endblock footer %}
+
 {% block contenido_principal %}
 
 <form method="POST" action="#">
@@ -19,20 +14,13 @@
                     <h4 class="titulo text-center">Registro Notas | Notas Segundo Quimestre</h4>
                 </header>
 
-
-
         <div class="card-body card-block">
             <form action="{% url 'Academico:Crear_RegistroNotas2' %}" enctype="multipart/form-data" class="form-horizontal" method="POST">
 
                <div class="row darkwhite-bg py-2">
           <div class="col-12">
 
-
             <div class="row">
-
-
-
-
 
                 <div class="col-3" oninput="resultado()" >
                     {{ form.primer_parcial_2Q  | as_crispy_field}}
@@ -46,7 +34,6 @@
                 <div class="col-3" oninput="resultado()">
                     {{ form.tercer_parcial_2Q  | as_crispy_field}}
 
-
                 </div>
                     <div class="col-3" oninput="PromedioTotal()">
 
@@ -57,19 +44,12 @@
                 <div class="col-3" oninput="PromedioTotal()">
                      {{ form.examen_2Q  | as_crispy_field}}
 
-
                 </div>
-              
 
                 <div class="col-3">
                  {{ form.promedio_general_2  | as_crispy_field}}
 
                 </div>
-
-
-
-
-
 
             </div>
 
@@ -86,9 +66,7 @@
   			</form>
         </div>
 
-
 </form>
-
 
     {% endif %}
 {% endblock contenido_principal %}

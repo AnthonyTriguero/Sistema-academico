@@ -1,8 +1,7 @@
-{% extends 'base/base.html' %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Add Acciones{% endblock title %}
+
 {% load crispy_forms_tags %}
 {% block contenido_principal %}
 
@@ -22,7 +21,6 @@
                 <div class="row darkwhite-bg py-2">
                     <div class="col-12">
                       <div class="form-row">
-
 
                         <div class=" col-12 col-md-12 mb-0">
                           {{ form.descripcion|as_crispy_field }}
@@ -55,7 +53,6 @@
              </div>
          </div>
    </form>
-
 
     {% endif %}
 {% endblock contenido_principal %}

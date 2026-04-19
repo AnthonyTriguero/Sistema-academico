@@ -1,9 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Reporterol{% endblock title %}
 {% load static %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+
 {% block contenido_principal %}
 {%block body%}
   <script>
@@ -14,14 +13,12 @@
        }
     </script>
 
-
 <div class="card shadow mb-45">
   <div class="card-header py-3">
     <h4 class="m-0 font-weight-bold text-primary text-center">Reporte | Rol</h6>
   </div>
 
   <div class="card-body ">
-
 
 <form  method="POST" id="myform">
     {% csrf_token %}
@@ -32,7 +29,6 @@
             <option  value="1">Mostrar todos los Roles</option>
             <option value="2" name="user">Filtrar por nombre del rol</option>
         </select>
-
 
         </select>&nbsp; <input type="text" class="form-control" name="campo" placeholder="buscar">
         <br>
@@ -63,8 +59,4 @@
 {% endblock body %}
 
 {% endblock contenido_principal %}
-
-
-
-
 

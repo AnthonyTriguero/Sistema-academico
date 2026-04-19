@@ -1,86 +1,409 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <meta content="" name="description">
-    <meta content="" name="author">
-    <title>SA - Login</title>
-    <!-- Custom fonts for this template-->
-    <link href=" {% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="  {% static 'css/sb-admin-2.min.css' %} " rel="stylesheet">
-    <!--Icono de la pestaña-->
-    <link href="{% static 'img/icono.ico' %}" rel="icon"/>
-    <script type="text/javascript">
-        if (top != self) top.location.href = location.href;
-    </script> 
-    
-</head>
-<body class="bg-gradient-primary">
- <div align="right">
-     <img src="static/img/Imagen_1.jpg" width="400px" height="150px">
- </div>
-<div class="container">
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-2 d-none d-lg-block "></div>
-                        <div class="col-lg-8">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <img height="70px" src="static/img/logo-login.png" width="70px">
-                                    <h1 class="h4 text-gray-900 mb-4">{% block Mensaje_login %} Inicio de sesion {% endblock Mensaje_login %}</h1>
-                                </div>
-                                {% if error %}
-                                <!-- Logout Modal-->
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <strong>Advertencia: </strong> {{ error }}
-                                </div>
-                                {% endif %}
-                                <form class="block" method="POST">{% csrf_token %}
-                                    <div class="form-group">
-                                        <input aria-describedby="emailHelp" class="form-control form-control-block" id="exampleInputEmail"
-                                               name="usu" placeholder="Usuario"
-                                               type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-block" id="exampleInputPassword" name="pass"
-                                               placeholder="Contraseña" type="password">
-                                    </div>
-                                    <input class="btn btn-primary  btn-block " type="submit" value="Ingresar">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sistema Académico — Iniciar Sesión</title>
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/icono.ico' %}">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background: #f0f2f5;
+        }
+
+        /* ── Panel izquierdo ── */
+        .login-brand {
+            width: 420px;
+            flex-shrink: 0;
+            background: linear-gradient(160deg, #3a5bd9 0%, #1a3ab8 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-brand::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            top: -80px;
+            right: -80px;
+        }
+
+        .login-brand::after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            bottom: -60px;
+            left: -60px;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .brand-logo img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .brand-divider {
+            width: 40px;
+            height: 3px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 2px;
+            margin: 1.25rem auto;
+        }
+
+        /* ── Panel derecho ── */
+        .login-form-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: #f0f2f5;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-box h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1a1d2e;
+            margin-bottom: 0.4rem;
+        }
+
+        .login-box .welcome-sub {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Alert de error */
+        .alert-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 0.6rem;
+            padding: 0.85rem 1rem;
+            color: #dc2626;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Campos */
+        .field-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .field-wrap {
+            position: relative;
+        }
+
+        .field-wrap .field-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 0.85rem;
+            pointer-events: none;
+        }
+
+        .field-wrap input {
+            width: 100%;
+            padding: 0.75rem 2.75rem 0.75rem 2.5rem;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 0.6rem;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            color: #1a1d2e;
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        .field-wrap input:focus {
+            border-color: #3a5bd9;
+            box-shadow: 0 0 0 3px rgba(58,91,217,0.12);
+        }
+
+        .field-wrap input::placeholder {
+            color: #c4c9d4;
+        }
+
+        .toggle-pass {
+            position: absolute;
+            right: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #9ca3af;
+            font-size: 0.85rem;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .toggle-pass:hover { color: #3a5bd9; }
+
+        /* Recordar */
+        .remember-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .remember-row input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #3a5bd9;
+            cursor: pointer;
+        }
+
+        .remember-row label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Botón */
+        .btn-ingresar {
+            width: 100%;
+            padding: 0.85rem;
+            background: linear-gradient(135deg, #3a5bd9 0%, #1a3ab8 100%);
+            color: #fff;
+            border: none;
+            border-radius: 0.6rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-ingresar:hover { opacity: 0.92; }
+        .btn-ingresar:active { transform: scale(0.99); }
+        .btn-ingresar:disabled { opacity: 0.7; cursor: not-allowed; }
+
+        /* Footer */
+        .login-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #9ca3af;
+            font-size: 0.78rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-brand { display: none; }
+            .login-form-wrap { background: linear-gradient(160deg, #3a5bd9 0%, #1a3ab8 100%); }
+            .login-box {
+                background: #fff;
+                border-radius: 1rem;
+                padding: 2rem 1.75rem;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .login-box {
+                background: #fff;
+                border-radius: 1rem;
+                padding: 2.5rem 2.25rem;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Panel izquierdo: marca -->
+    <div class="login-brand">
+        <div class="brand-logo">
+            <img src="{% static 'img/logo-login.png' %}" alt="Logo SA">
+        </div>
+        <div class="brand-title">Sistema Académico</div>
+        <div class="brand-divider"></div>
+        <div class="brand-subtitle">
+            Unidad Educativa Fiscal<br>Jaime Roldós Aguilera
         </div>
     </div>
-</div>
 
+    <!-- Panel derecho: formulario -->
+    <div class="login-form-wrap">
+        <div class="login-box">
 
-<!-- Bootstrap core JavaScript-->
+            <h2>Bienvenido</h2>
+            <p class="welcome-sub">Ingresa tus credenciales para acceder al sistema</p>
+
+            {% if error %}
+            <div class="alert-error">
+                <i class="fas fa-exclamation-circle"></i>
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST" id="loginForm" autocomplete="on">
+                {% csrf_token %}
+
+                <div class="field-group">
+                    <label for="inputUsuario">Usuario</label>
+                    <div class="field-wrap">
+                        <i class="fas fa-user field-icon"></i>
+                        <input type="text"
+                               id="inputUsuario"
+                               name="usu"
+                               placeholder="Ingresa tu usuario"
+                               autocomplete="username"
+                               spellcheck="false"
+                               required>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="inputPassword">Contraseña</label>
+                    <div class="field-wrap">
+                        <i class="fas fa-lock field-icon"></i>
+                        <input type="password"
+                               id="inputPassword"
+                               name="pass"
+                               placeholder="••••••••"
+                               autocomplete="current-password"
+                               required>
+                        <button type="button" class="toggle-pass" id="togglePass" tabindex="-1">
+                            <i class="fas fa-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="remember-row">
+                    <input type="checkbox" id="recordarUsuario">
+                    <label for="recordarUsuario">Recordar usuario</label>
+                </div>
+
+                <button type="submit" class="btn-ingresar" id="btnIngresar">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Ingresar
+                </button>
+            </form>
+
+            <div class="login-footer">
+                &copy; {% now "Y" %} ISTG — Sistema Académico
+            </div>
+
+        </div>
+    </div>
+
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script>
+$(document).ready(function () {
 
-<!-- Core plugin JavaScript-->
-<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    const STORAGE_KEY = 'sa_remembered_user';
+    const STORAGE_PASS = 'sa_remembered_pass';
 
-<!-- Custom scripts for all pages-->
-<script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    // Cargar credenciales guardadas
+    const savedUser = localStorage.getItem(STORAGE_KEY);
+    const savedPass = localStorage.getItem(STORAGE_PASS);
+    if (savedUser) {
+        $('#inputUsuario').val(savedUser);
+        $('#recordarUsuario').prop('checked', true);
+    }
+    if (savedPass) {
+        $('#inputPassword').val(atob(savedPass)); // decodificar base64
+        if (savedUser) $('#btnIngresar').focus();
+    }
 
+    // Submit
+    $('#loginForm').on('submit', function () {
+        if ($('#recordarUsuario').is(':checked')) {
+            localStorage.setItem(STORAGE_KEY, $('#inputUsuario').val().trim());
+            // Guardar contraseña en base64 (ofuscación básica, no cifrado real)
+            localStorage.setItem(STORAGE_PASS, btoa($('#inputPassword').val()));
+        } else {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STORAGE_PASS);
+        }
+        $('#btnIngresar').prop('disabled', true)
+            .html('<i class="fas fa-spinner fa-spin"></i> Verificando...');
+    });
+
+    // Mostrar / ocultar contraseña
+    $('#togglePass').on('click', function () {
+        const input = $('#inputPassword');
+        const icon = $('#toggleIcon');
+        const isPass = input.attr('type') === 'password';
+        input.attr('type', isPass ? 'text' : 'password');
+        icon.toggleClass('fa-eye', !isPass).toggleClass('fa-eye-slash', isPass);
+    });
+
+});
+</script>
 </body>
-
 </html>

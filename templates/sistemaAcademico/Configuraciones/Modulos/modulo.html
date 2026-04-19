@@ -1,8 +1,6 @@
-{% extends 'base/base.html' %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block sidebar %}
-{% endblock sidebar %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Modulo{% endblock title %}
 
 {% block contenido_principal %}
 <header class="cuadro_titulo bg-gradient-primary text-center ">
@@ -71,18 +69,12 @@
     </div>
 </div>
 
-
-
 {% endblock contenido_principal %}
 
 {% block extrajs %}
 
-
 <div class="modal fade" id="mostrar_modal" role="dialog">
 
-
 </div>
-
-
 
 {% endblock extrajs %}

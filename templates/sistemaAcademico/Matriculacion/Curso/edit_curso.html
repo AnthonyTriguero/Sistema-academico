@@ -1,14 +1,8 @@
-{% extends 'base/base.html' %}
-{% load crispy_forms_tags %}
-{% block sidebar %}
-{% endblock sidebar %}
-{% block modulo %}
-{% endblock modulo %}
-{% block encabezado %}
-{% endblock encabezado %}
-{% block footer %}
+{% extends 'base/base_layout.html' %}
 
-{% endblock footer %}
+{% block title %}SA - Edit Curso{% endblock title %}
+{% load crispy_forms_tags %}
+
 {% block contenido_principal %}
 <form method="POST" action="#">
     {% csrf_token %}
@@ -31,7 +25,6 @@
                     {{ form.nombre  | as_crispy_field}}
                     {{ form.id_genr_modalidad  | as_crispy_field}}
 
-
                 </div>
                 <div class="col-auto">
                     {{ form.id_genr_formacion  | as_crispy_field}}
@@ -47,9 +40,6 @@
                     {{ form.cupo  | as_crispy_field}}
                 </div>
             </div>
-
-
-
 
           </div>
         </div>

@@ -1,5 +1,7 @@
-{% extends 'base/base.html' %} {% block encabezado %} {% endblock encabezado %}
-{% block sidebar %} {% endblock sidebar %} {% block contenido_principal %}
+{% extends 'base/base_layout.html' %}
+
+{% block title %}SA - Permisos{% endblock title %} 
+ {% block contenido_principal %}
 
 <header class="cuadro_titulo" class="title">
     <h4>Configuracion | Permisos</h4>
@@ -18,7 +20,6 @@
         <h6 class="m-0 font-weight-bold text-primary float-left">
             Roles disponibles en el sistema
         </h6>
-
 
     </div>
 
@@ -56,7 +57,6 @@
                         {% endfor %}
                         {% endfor %}
 
-
                     </td>
                 </tr>
                 {% endfor %}
@@ -64,7 +64,7 @@
             </table>
         </div>
     </div>
-    {% endblock contenido_principal %} {% block footer %} {% endblock footer %}
+    {% endblock contenido_principal %} 
     <!-- -->
-    {% block scrool %} {% endblock scrool %}
+    
 </div>
