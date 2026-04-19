@@ -8,7 +8,8 @@
 
 - [ ] Migrar SHA1 en Estructura_view_file.py y file_ex.py: ambos archivos aún usan `hashlib.new("sha1")` para crear contraseñas de UsuarioTemp al importar estudiantes desde Excel. Cambiar a `hash_password()` de utils.py
 - [ ] Corregir wildcard imports (`from module import *`): views.py, urls.py y varios controladores usan `import *` lo que contamina el namespace y dificulta rastrear de dónde viene cada clase/función
-- [ ] Eliminar las ~40 rutas duplicadas de timeout en urls.py: con el middleware de autenticación centralizado, las rutas tipo `path('modulo/timeout/', timeout)` son innecesarias
+- [x] Eliminar las ~40 rutas duplicadas de timeout en urls.py: con el middleware de autenticación centralizado, las rutas tipo `path('modulo/timeout/', timeout)` son innecesarias
+- [x] Eliminar `import pickle` no utilizado en urls.py
 - [ ] Agregar paginación a los ListView: Usuarios, Estudiante, Empleado, Roles cargan todos los registros de golpe. Agregar `paginate_by = 20`
 
 ## Prioridad media
@@ -29,4 +30,4 @@
 - [ ] Agregar API de consulta de estudiantes: actualmente solo hay endpoints para menú, unidad educativa y usuario. Falta un endpoint REST para consultar estudiantes y notas
 - [ ] Documentar la API con Swagger/OpenAPI: los endpoints REST no tienen documentación
 - [ ] Agregar rate limiting al login: no hay protección contra fuerza bruta. Implementar `django-axes` o similar
-- [ ] Eliminar el import de `pickle` en urls.py de la app: `import pickle` está en la primera línea de GestionAcademica/urls.py pero nunca se usa
+- [x] Eliminar el import de `pickle` en urls.py de la app (eliminado junto con rutas timeout)
