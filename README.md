@@ -49,6 +49,8 @@ AmbienteDesarrolloPython/
 │           ├── Controladores/         # Lógica de vistas por módulo
 │           │   ├── API/               # Endpoints REST (Menu, Unidad, Usuario)
 │           │   ├── Configuraciones/   # CRUD: usuarios, roles, menús, empresa, SMTP
+│           │   │   ├── Estructura_view_usuarios.py       # Solo CRUD (67 líneas)
+│           │   │   └── Estructura_view_reportes_conf.py  # Reportes PDF/Excel
 │           │   ├── Mantenimiento/     # CRUD: personas, empleados, reportes
 │           │   ├── Matriculacion/     # Matrícula, cursos, notas, horarios
 │           │   └── Reportes_especiales/
@@ -233,3 +235,21 @@ Disponibles desde los módulos de Configuraciones y Mantenimiento.
 - Los modelos están organizados en `Diccionario/` por prefijo: `conf_`, `genr_`, `mant_`, `mov_`
 - Las validaciones de cédula y RUC ecuatoriano están en `Apps/Validaciones.py`
 - El sistema de permisos es custom (no usa el de Django auth) basado en `ConfRol`, `ConfPermiso` y `ConfAccion`
+- Logging centralizado con `logging` en todos los controladores (sin `print()`)
+- Reportes separados del CRUD en `Estructura_view_reportes_conf.py`
+
+## Tests
+
+Ejecutar los tests unitarios:
+
+```bash
+python manage.py test sistemaAcademico.Apps.GestionAcademica.tests
+```
+
+Cobertura actual (51 tests):
+- Hashing y migración de contraseñas (SHA1 → PBKDF2)
+- Validaciones de cédula, RUC, usuario, contraseña, celular
+- Login, logout y sesiones
+- Middleware de autenticación
+- Context processor de permisos
+- Modelos y relaciones
